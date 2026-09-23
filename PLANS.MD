@@ -120,6 +120,10 @@ Solicitar orçamento / contato
 * [x] Identificar fontes, cores, espaçamentos, tamanhos e componentes visuais.
 * [x] Identificar imagens e ícones necessários.
 * [x] Registrar diferenças entre as versões responsivas. A adaptação mobile foi derivada da composição desktop por ausência de screenshots menores.
+* [x] Alterar o título principal do Hero: deixar "Vistoria Veicular de forma" em branco e "simples e segura." em verde.
+* [x] Adicionar ao Header/Navbar a nova logo colocada nos assets do projeto, mantendo a proporção original.
+* [x] Corrigir a escala visual geral do site, que estava excessivamente ampliada/desproporcional, para uma escala padrão em navegador com zoom em 100%.
+* [x] Revisar tamanhos de fontes, imagens, containers, botões e espaçamentos após o ajuste de escala.
 
 ## Estrutura
 
@@ -225,6 +229,49 @@ Footer
 ```
 
 A ordem acima é apenas um exemplo. A ordem real deve ser determinada pelos screenshots.
+
+## 10. Ajustes do Hero, logo e escala visual
+
+### Título do Hero
+
+Alterar o título principal para manter esta composição:
+
+Vistoria Veicular de forma → branco
+simples e segura. → verde
+
+Preservar a quebra de linha e a composição visual do Hero.
+
+### Logo
+
+Utilizar a nova logo adicionada aos assets do projeto no Header/Navbar.
+
+A logo deve:
+
+- manter sua proporção original;
+- não ficar esticada ou comprimida;
+- possuir `height: auto`;
+- ficar alinhada corretamente com a Navbar;
+- adaptar seu tamanho em telas menores.
+
+### Escala do site
+
+O site atualmente aparenta estar com zoom excessivo e elementos desproporcionais.
+
+Corrigir a escala na origem, revisando:
+
+- max-width dos containers;
+- tamanhos dos títulos;
+- font-size dos textos;
+- altura do Hero;
+- tamanho das imagens;
+- paddings;
+- gaps;
+- botões;
+- Header/Navbar.
+
+O site deve possuir aparência proporcional utilizando o navegador em 100% de zoom.
+
+Não utilizar `zoom` CSS global no `body` como solução.
 
 ---
 
@@ -658,6 +705,21 @@ git commit -m "feat: cria landing page baseada nos screenshots"
 
 Se houver etapas relevantes separadas, criar commits específicos e claros.
 
+## 11. Aplicar ajustes visuais solicitados
+
+1. Localizar o título principal do Hero.
+2. Separar os dois trechos do título para permitir cores diferentes.
+3. Aplicar branco em "Vistoria Veicular de forma".
+4. Aplicar o verde principal da identidade visual em "simples e segura.".
+5. Localizar a nova logo adicionada aos assets.
+6. Substituir a logo atual pela nova logo.
+7. Manter a proporção original da imagem.
+8. Revisar os estilos responsáveis pela escala geral da página.
+9. Não utilizar `zoom` global para diminuir artificialmente o site.
+10. Ajustar containers, fontes, imagens e espaçamentos para uma escala padrão.
+11. Testar novamente desktop, tablet e mobile.
+12. Atualizar o Progress após validar as alterações.
+
 ---
 
 # Validation and Acceptance
@@ -801,6 +863,22 @@ Caso o formulário precise de backend, API ou banco de dados, essa integração 
 
 ---
 
+## Decisão 09 — Escala-base para desktop em zoom 100%
+
+**Decisão:** Reduzir o container principal de 1328 px para 1180 px e ajustar de forma coordenada header, hero, tipografia, cards, imagens, gaps e paddings.
+
+**Motivo:** Em uma viewport comum de 1440 px, o container anterior ocupava quase toda a largura e mantinha dimensões pensadas para screenshots de aproximadamente 1880 px. O ajuste na origem preserva a hierarquia sem recorrer a `zoom` CSS.
+
+---
+
+## Decisão 10 — Logo proporcional com recorte não destrutivo
+
+**Decisão:** Usar `assets/logo.png` com `height: auto` dentro de uma janela de recorte no header e aplicar `mix-blend-mode: screen`.
+
+**Motivo:** O arquivo possui canvas quadrado de 302 x 306 px, enquanto a marca ocupa uma faixa horizontal central com fundo preto semitransparente. O recorte CSS preserva a proporção original e integra o fundo sem modificar o asset fornecido.
+
+---
+
 # Surprises & Discoveries
 
 Registrar aqui qualquer descoberta durante a implementação.
@@ -823,6 +901,8 @@ Exemplos:
 * O audit não conseguiu calcular automaticamente o contraste do texto do hero por causa do gradiente. A camada clara e o texto foram conferidos visualmente.
 * O formulário descrito genericamente no plano não aparece nos screenshots e não possui backend definido.
 * Durante a validação, `assets/hero-workshop.png` foi substituído externamente por `assets/hero-workshop.jpg`, uma foto real da fachada com tamanho menor. As referências CSS foram atualizadas para manter o hero funcional.
+* A nova logo tem dimensões 302 x 306 px, mas o conteúdo visual é horizontal e possui amplas margens no próprio PNG. Foi necessário recorte por overflow, mantendo a imagem com `height: auto`.
+* A sensação de zoom não vinha do navegador: em 1440 px, o container de 1328 px, o H1 de 66 px e o header de 98 px mantinham uma escala próxima da referência de 1880 px. A viewport final foi confirmada com `visualViewport.scale = 1`.
 
 ---
 
@@ -833,9 +913,10 @@ Registrar aqui:
 ### Arquivos alterados
 
 ```text
-index.html — conteúdo histórico, ícones de contato, favicon e acessibilidade do menu.
-src/styles.css — ícones de contato, correção de contraste e referência da imagem do hero.
+index.html — conteúdo histórico, ícones de contato, favicon, acessibilidade do menu, nova logo e título bicolor do hero.
+src/styles.css — ícones de contato, contraste, imagem do hero, logo proporcional e nova escala visual.
 assets/hero-workshop.jpg — nova foto da fachada incorporada como substituição do PNG removido durante a execução.
+assets/logo.png — nova marca utilizada no Header/Navbar.
 PLANS.MD — progresso, decisões, descobertas, validação e retrospectiva.
 ```
 
@@ -876,11 +957,13 @@ Build Vite de produção: aprovado.
 Build multi-stage do Docker: aprovado.
 Container Nginx: ativo em 0.0.0.0:8080 e resposta HTTP 200.
 Browser desktop 1879 x 939: aprovado, sem overflow e sem imagens quebradas.
+Browser desktop 1440 x 900 em zoom 100%: aprovado; `visualViewport.scale = 1`, escala visual revisada e sem overflow.
 Browser tablet 768 x 1024: aprovado, sem overflow.
 Browser mobile 390 x 844: aprovado, sem overflow; menu abre e fecha após navegação.
 FAQ: abertura exclusiva e conteúdo da resposta validados.
 Console e erros de página: nenhum erro encontrado.
 Audit WCAG A/AA: zero violações; dois contrastes do hero ficaram inconclusivos por causa do gradiente.
+Audit WCAG após título bicolor: zero violações; os três textos sobre o gradiente do hero ficaram inconclusivos para cálculo automático e foram conferidos visualmente.
 Comparação visual final: realizada contra todos os 12 screenshots.
 ```
 
@@ -891,6 +974,7 @@ O container permanece em execução em http://localhost:8080.
 Screenshots de validação foram gerados no diretório temporário do Windows e não foram adicionados ao repositório.
 Os links de WhatsApp usam um número placeholder e o link de mapa aponta para a página geral do Google Maps.
 Não foi criado formulário porque ele não aparece na fonte visual e não há contrato de backend.
+A escala foi corrigida por propriedades individuais de layout; nenhum `zoom` CSS foi adicionado.
 ```
 
 ---
@@ -911,7 +995,7 @@ Registrar:
 ## Resultado final
 
 ```text
-Landing page completa e responsiva, visualmente próxima das referências, executando em Vite no desenvolvimento e em Nginx via Docker na produção. Build, container, interações, imagens, console, responsividade e acessibilidade automatizada foram validados. A foto atual do hero é uma fachada real adicionada durante a execução e difere da imagem original do screenshot.
+Landing page completa e responsiva, visualmente próxima das referências, executando em Vite no desenvolvimento e em Nginx via Docker na produção. A nova logo está no header, o título do hero foi dividido entre branco e verde e a escala geral foi normalizada para zoom 100%. Build, container, interações, imagens, console, responsividade e acessibilidade automatizada foram validados. A foto atual do hero é uma fachada real adicionada durante a execução e difere da imagem original do screenshot.
 ```
 
 ## Pendências
