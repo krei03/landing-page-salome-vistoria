@@ -1,0 +1,930 @@
+# ExecPlan — Landing Page baseada em screenshots
+
+## Purpose / Big Picture
+
+Criar uma **landing page profissional focada em conversão de visitantes em clientes**, reproduzindo visualmente o site apresentado nas imagens existentes na pasta:
+
+```text
+screenshots/
+```
+
+A pasta `screenshots/` será considerada a **fonte visual de verdade do projeto**.
+
+O objetivo não é criar uma landing page genérica ou escolher outro design. O objetivo é **reconstruir o site mostrado nos screenshots**, respeitando:
+
+* estrutura das seções;
+* posicionamento dos elementos;
+* espaçamentos;
+* tipografia;
+* cores;
+* tamanhos;
+* bordas;
+* sombras;
+* imagens;
+* ícones;
+* botões;
+* navegação;
+* proporções;
+* comportamento responsivo;
+* diferenças entre desktop e mobile, caso existam screenshots dessas versões.
+
+A landing page deverá apresentar os serviços de desenvolvimento de sistemas e soluções digitais e conduzir o visitante para uma ação de contato/orçamento.
+
+---
+
+## Context and Orientation
+
+Antes de escrever ou alterar qualquer código, o projeto deve ser analisado para entender:
+
+* framework utilizado;
+* estrutura de pastas;
+* sistema de estilos;
+* componentes existentes;
+* imagens e assets disponíveis;
+* configurações do projeto;
+* dependências instaladas;
+* scripts disponíveis no `package.json`.
+
+Também é obrigatório analisar **todos os screenshots disponíveis em `screenshots/`** antes da implementação.
+
+### Fonte visual
+
+```text
+screenshots/
+```
+
+Os screenshots devem ser utilizados para identificar:
+
+1. Estrutura geral da página.
+2. Header/navbar.
+3. Hero.
+4. Títulos e subtítulos.
+5. Botões.
+6. Cards.
+7. Seções de conteúdo.
+8. Imagens.
+9. Ícones.
+10. Formulários.
+11. CTA.
+12. Footer.
+13. Espaçamentos.
+14. Largura máxima dos conteúdos.
+15. Tipografia.
+16. Cores.
+17. Bordas e border-radius.
+18. Sombras.
+19. Animações aparentes.
+20. Comportamento responsivo.
+
+Se existirem screenshots de desktop e mobile, ambos devem ser considerados como referência.
+
+### Objetivo comercial
+
+A página deverá comunicar de forma clara que o serviço oferece desenvolvimento de soluções digitais personalizadas, como:
+
+* sistemas web;
+* sites;
+* landing pages;
+* dashboards;
+* APIs;
+* automações;
+* integrações;
+* sistemas internos;
+* soluções personalizadas.
+
+O visitante deve conseguir entender rapidamente:
+
+```text
+O que é oferecido
+        ↓
+Como isso pode ajudar
+        ↓
+Por que entrar em contato
+        ↓
+Solicitar orçamento / contato
+```
+
+---
+
+# Progress
+
+## Análise
+
+* [x] Analisar completamente a estrutura atual do projeto.
+* [x] Verificar framework e tecnologias utilizadas.
+* [x] Verificar `package.json` e scripts disponíveis.
+* [x] Localizar e analisar todos os arquivos da pasta `screenshots/`.
+* [x] Identificar quais screenshots representam desktop.
+* [x] Identificar quais screenshots representam tablet/mobile. Não há referência mobile/tablet; os 12 arquivos têm largura entre 1866 e 1888 px.
+* [x] Mapear todas as seções existentes nos screenshots.
+* [x] Identificar fontes, cores, espaçamentos, tamanhos e componentes visuais.
+* [x] Identificar imagens e ícones necessários.
+* [x] Registrar diferenças entre as versões responsivas. A adaptação mobile foi derivada da composição desktop por ausência de screenshots menores.
+
+## Estrutura
+
+* [x] Criar ou adaptar a estrutura principal da landing page.
+* [x] Criar o Header/Navbar conforme o screenshot.
+* [x] Criar a seção Hero.
+* [x] Criar as demais seções identificadas nos screenshots.
+* [x] Criar CTAs.
+* [x] Criar formulário de captura de leads, caso exista ou seja necessário. Não aplicável à referência atual, que usa CTAs de WhatsApp e não apresenta formulário.
+* [x] Criar Footer conforme a referência visual.
+* [x] Criar componentes reutilizáveis quando fizer sentido. A página estática reutiliza classes de botão, card, container e heading.
+
+## Visual
+
+* [x] Reproduzir fielmente o layout dos screenshots.
+* [x] Reproduzir tipografia.
+* [x] Reproduzir cores.
+* [x] Reproduzir espaçamentos.
+* [x] Reproduzir tamanhos.
+* [x] Reproduzir bordas e arredondamentos.
+* [x] Reproduzir sombras.
+* [ ] Reproduzir integralmente as imagens. As imagens internas correspondem à referência, mas o hero passou a usar a nova foto real `hero-workshop.jpg`, diferente do screenshot original.
+* [x] Reproduzir ícones.
+* [x] Reproduzir botões.
+* [x] Reproduzir largura dos containers.
+* [x] Reproduzir alinhamentos.
+* [x] Reproduzir elementos decorativos.
+* [x] Evitar adicionar elementos que não existem na referência sem necessidade.
+
+## Responsividade
+
+* [x] Implementar versão desktop.
+* [x] Implementar versão tablet quando necessário.
+* [x] Implementar versão mobile.
+* [x] Garantir que o layout não quebre em diferentes larguras.
+* [x] Verificar menus e navegação mobile.
+* [x] Verificar tamanhos de fonte.
+* [x] Verificar espaçamentos.
+* [x] Verificar imagens.
+* [x] Verificar ausência de scroll horizontal nas larguras de 1879, 768 e 390 px.
+
+## Conversão
+
+* [x] Garantir que os CTAs estejam funcionando.
+* [x] Implementar botão de WhatsApp quando aplicável.
+* [ ] Implementar formulário de contato.
+* [ ] Implementar validação dos campos.
+* [ ] Criar feedback visual de envio.
+* [ ] Preparar estrutura dos dados dos leads.
+
+Os quatro itens de formulário permanecem pendentes porque a referência não contém formulário e não existe backend/API definido. O número do WhatsApp também deve ser substituído pelo dado real antes da publicação.
+
+## Validação
+
+* [x] Executar o projeto localmente.
+* [x] Verificar todas as páginas/seções.
+* [x] Comparar visualmente com os screenshots.
+* [x] Corrigir diferenças relevantes.
+* [x] Verificar console do navegador.
+* [x] Verificar erros de build.
+* [x] Verificar responsividade.
+* [x] Fazer uma última comparação visual.
+* [x] Fazer commit das etapas concluídas.
+
+---
+
+# Plan of Work
+
+## 1. Analisar os screenshots
+
+Antes de implementar qualquer seção, analisar todas as imagens existentes em:
+
+```text
+screenshots/
+```
+
+Criar mentalmente um mapa da página identificando a ordem exata das seções.
+
+Exemplo:
+
+```text
+Navbar
+   ↓
+Hero
+   ↓
+Seção 01
+   ↓
+Seção 02
+   ↓
+Cards/Serviços
+   ↓
+Benefícios
+   ↓
+Projetos/Resultados
+   ↓
+Processo
+   ↓
+CTA
+   ↓
+Formulário
+   ↓
+Footer
+```
+
+A ordem acima é apenas um exemplo. A ordem real deve ser determinada pelos screenshots.
+
+---
+
+## 2. Reproduzir a estrutura visual
+
+A implementação deve partir do screenshot e não de um template genérico.
+
+Para cada seção, observar:
+
+* posição;
+* largura;
+* altura;
+* alinhamento;
+* espaçamento;
+* hierarquia de texto;
+* imagens;
+* elementos decorativos;
+* comportamento responsivo.
+
+O resultado deve parecer uma implementação do mesmo site apresentado nas imagens.
+
+---
+
+## 3. Header / Navbar
+
+Reproduzir o Header exatamente conforme a referência.
+
+Verificar:
+
+* logo;
+* tamanho;
+* posição;
+* links;
+* espaçamento;
+* botão;
+* fundo;
+* bordas;
+* comportamento durante scroll, se existir;
+* versão mobile.
+
+Não criar uma navbar diferente apenas por preferência de implementação.
+
+---
+
+## 4. Hero
+
+Reproduzir o Hero conforme o screenshot.
+
+Deve respeitar:
+
+* título;
+* subtítulo;
+* tamanho da fonte;
+* largura do texto;
+* posição;
+* CTA;
+* imagens;
+* elementos decorativos;
+* alinhamento;
+* altura da seção.
+
+Caso o screenshot apresente uma composição específica, essa composição deverá ser reproduzida.
+
+---
+
+## 5. Seções internas
+
+Cada seção identificada nos screenshots deverá possuir seu próprio componente quando isso melhorar a organização.
+
+Exemplos possíveis:
+
+```text
+Navbar
+Hero
+Services
+Benefits
+Projects
+Process
+Testimonials
+LeadForm
+CTA
+Footer
+```
+
+Os nomes acima são apenas referências. Criar somente os componentes realmente necessários para reproduzir os screenshots.
+
+---
+
+## 6. Conteúdo
+
+O conteúdo textual deve ser coerente com uma empresa/profissional que desenvolve soluções digitais sob medida.
+
+A comunicação deve deixar claro que o serviço pode envolver:
+
+* desenvolvimento de sistemas;
+* sites;
+* landing pages;
+* automações;
+* APIs;
+* dashboards;
+* integrações;
+* sistemas personalizados.
+
+Quando houver textos claramente legíveis nos screenshots, priorizar a reprodução desses textos.
+
+Não substituir um conteúdo visualmente importante por textos genéricos sem necessidade.
+
+---
+
+## 7. Captura de leads
+
+Caso exista formulário ou CTA de contato na referência, implementar o comportamento correspondente.
+
+Estrutura sugerida para um lead:
+
+```text
+id
+nome
+whatsapp
+email
+empresa
+tipoProjeto
+orcamento
+mensagem
+createdAt
+```
+
+Campos possíveis:
+
+* Nome
+* WhatsApp
+* E-mail
+* Empresa
+* Tipo de projeto
+* Orçamento aproximado
+* Mensagem
+
+Tipos de projeto:
+
+```text
+Sistema
+Site
+Landing Page
+E-commerce
+Automação
+Dashboard
+API / Integração
+Outro
+```
+
+Orçamento:
+
+```text
+Ainda não sei
+Até R$ 2.000
+R$ 2.000 - R$ 5.000
+R$ 5.000 - R$ 10.000
+Acima de R$ 10.000
+```
+
+Esses campos devem ser adaptados caso o screenshot apresente uma estrutura diferente.
+
+---
+
+## 8. CTA / WhatsApp
+
+Os CTAs deverão levar o visitante para a ação correspondente.
+
+Quando houver botão de WhatsApp, utilizar uma chamada clara para contato.
+
+Exemplo:
+
+```text
+Falar no WhatsApp
+```
+
+ou o texto apresentado no screenshot.
+
+---
+
+## 9. Design System
+
+Extrair do screenshot:
+
+### Cores
+
+Identificar:
+
+* background principal;
+* background secundário;
+* cor dos textos;
+* cor dos textos secundários;
+* cor dos botões;
+* cor dos destaques;
+* bordas;
+* elementos decorativos.
+
+### Tipografia
+
+Identificar:
+
+* fonte;
+* peso;
+* tamanho;
+* line-height;
+* letter-spacing;
+* hierarquia entre títulos e textos.
+
+### Componentes
+
+Identificar padrões de:
+
+* botão;
+* card;
+* input;
+* badge;
+* seção;
+* container;
+* imagem;
+* ícone.
+
+Esses padrões devem ser reutilizados para manter consistência.
+
+---
+
+# Concrete Steps
+
+## 1. Inspecionar o projeto
+
+Executar:
+
+```bash
+pwd
+```
+
+```bash
+ls
+```
+
+ou equivalente no Windows.
+
+Depois verificar:
+
+```bash
+cat package.json
+```
+
+e analisar a estrutura:
+
+```text
+src/
+app/
+components/
+public/
+screenshots/
+```
+
+conforme a estrutura real do projeto.
+
+---
+
+## 2. Inspecionar screenshots
+
+Listar os arquivos:
+
+```bash
+find screenshots -type f
+```
+
+No Windows PowerShell, utilizar:
+
+```powershell
+Get-ChildItem screenshots -Recurse
+```
+
+Abrir/analisar cada screenshot disponível antes da implementação.
+
+---
+
+## 3. Implementar a página
+
+Criar ou adaptar os componentes necessários.
+
+Estrutura sugerida:
+
+```text
+src/
+├── components/
+│   ├── Navbar
+│   ├── Hero
+│   ├── Services
+│   ├── Benefits
+│   ├── Projects
+│   ├── Process
+│   ├── LeadForm
+│   ├── CTA
+│   └── Footer
+│
+├── sections/
+│   └── LandingPage
+│
+├── services/
+│   └── leads
+│
+└── styles/
+```
+
+A estrutura real deve respeitar o framework já existente.
+
+---
+
+## 4. Implementar primeiro o desktop
+
+Construir a primeira versão utilizando o screenshot desktop como referência principal.
+
+Prioridade:
+
+```text
+Estrutura
+→ Espaçamento
+→ Tipografia
+→ Cores
+→ Imagens
+→ Componentes
+→ Detalhes
+```
+
+---
+
+## 5. Implementar responsividade
+
+Depois da versão desktop, adaptar para:
+
+```text
+Desktop
+Tablet
+Mobile
+```
+
+Quando houver screenshot mobile, ele deve ser tratado como referência visual específica.
+
+---
+
+## 6. Executar o projeto
+
+Usar o script existente no `package.json`.
+
+Exemplo:
+
+```bash
+npm install
+```
+
+```bash
+npm run dev
+```
+
+ou o comando equivalente encontrado no projeto.
+
+---
+
+## 7. Verificar visualmente
+
+Comparar a implementação com os screenshots.
+
+Verificar principalmente:
+
+* distância entre elementos;
+* largura dos containers;
+* tamanho dos títulos;
+* posição dos botões;
+* tamanho das imagens;
+* altura das seções;
+* alinhamentos;
+* cores;
+* sombras;
+* bordas;
+* responsividade.
+
+---
+
+## 8. Corrigir diferenças
+
+Após a primeira comparação:
+
+* corrigir desalinhamentos;
+* ajustar espaçamentos;
+* ajustar tamanhos;
+* corrigir fontes;
+* corrigir cores;
+* corrigir imagens;
+* corrigir responsividade.
+
+Repetir até que o resultado esteja visualmente próximo da referência.
+
+---
+
+## 9. Validar build
+
+Executar o comando de build disponível no projeto.
+
+Exemplo:
+
+```bash
+npm run build
+```
+
+Corrigir todos os erros encontrados.
+
+---
+
+## 10. Git
+
+Verificar:
+
+```bash
+git status
+```
+
+Adicionar alterações:
+
+```bash
+git add .
+```
+
+Criar commit:
+
+```bash
+git commit -m "feat: cria landing page baseada nos screenshots"
+```
+
+Se houver etapas relevantes separadas, criar commits específicos e claros.
+
+---
+
+# Validation and Acceptance
+
+A implementação será considerada concluída quando todos os critérios abaixo forem atendidos.
+
+## Visual
+
+* [x] A estrutura da página corresponde aos screenshots.
+* [x] As seções aparecem na ordem correta.
+* [x] Header corresponde à referência.
+* [x] Hero corresponde à referência.
+* [x] Tipografia está visualmente próxima.
+* [x] Cores estão visualmente próximas.
+* [x] Espaçamentos estão visualmente próximos.
+* [x] Botões correspondem à referência.
+* [x] Cards correspondem à referência.
+* [x] Imagens estão posicionadas corretamente.
+* [x] Elementos decorativos estão presentes quando existirem na referência.
+* [x] Footer corresponde à referência.
+
+## Responsividade
+
+* [x] Desktop validado em 1879 x 939.
+* [x] Tablet validado em 768 x 1024.
+* [x] Mobile validado em 390 x 844.
+* [x] Não existe scroll horizontal indevido.
+* [x] Textos não ficam cortados.
+* [x] Imagens não quebram o layout.
+* [x] Botões continuam utilizáveis em telas menores.
+* [x] Menu mobile abre, apresenta os links e fecha após a navegação.
+
+## Funcionalidade
+
+* [x] CTAs funcionam.
+* [x] Links internos funcionam e os links externos possuem destinos válidos.
+* [ ] WhatsApp aponta para o número real da empresa. A integração está implementada, mas usa `5511999998888` como placeholder.
+* [ ] Formulário funciona.
+* [ ] Campos obrigatórios possuem validação.
+* [ ] Usuário recebe feedback após envio.
+* [x] Não existem erros JavaScript no console.
+
+## Qualidade técnica
+
+* [x] Projeto inicia corretamente com Docker/Nginx e retorna HTTP 200.
+* [x] Build executa sem erros.
+* [x] Não existem imports quebrados.
+* [x] Não existem imagens inexistentes sendo referenciadas.
+* [x] Não existem componentes duplicados desnecessariamente.
+* [x] Código está organizado.
+* [x] Responsividade foi validada.
+* [x] Comparação final com os screenshots foi realizada.
+
+---
+
+# Interfaces and Dependencies
+
+A implementação deverá respeitar as tecnologias já existentes no projeto.
+
+Dependências externas somente devem ser adicionadas quando realmente necessárias.
+
+Possíveis dependências:
+
+```text
+React / Next.js
+TypeScript
+Tailwind CSS
+Lucide / biblioteca de ícones
+Biblioteca de componentes existente
+```
+
+Não adicionar uma biblioteca apenas para reproduzir algo que pode ser feito com CSS ou com dependências já existentes.
+
+Caso o formulário precise de backend, API ou banco de dados, essa integração deverá ser documentada antes de sua implementação.
+
+---
+
+# Decision Log
+
+## Decisão 01 — Screenshots como fonte visual
+
+**Decisão:** Os screenshots presentes em `screenshots/` são a principal referência visual.
+
+**Motivo:** O objetivo é reproduzir o site mostrado nas imagens, e não criar uma nova identidade visual.
+
+---
+
+## Decisão 02 — Fidelidade visual antes de personalização
+
+**Decisão:** Não modificar a estrutura visual dos screenshots por preferência pessoal ou por padrões genéricos de landing pages.
+
+**Motivo:** A prioridade do projeto é a reprodução visual.
+
+---
+
+## Decisão 03 — Responsividade
+
+**Decisão:** O layout deverá ser responsivo.
+
+**Motivo:** A landing page precisa funcionar em desktop e dispositivos móveis, respeitando os screenshots disponíveis para cada resolução.
+
+---
+
+## Decisão 04 — Implementação estática com Vite
+
+**Decisão:** Manter a landing page em HTML, CSS e JavaScript, empacotada pelo Vite e servida por Nginx no Docker.
+
+**Motivo:** O projeto não exige estado complexo nem backend, e essa solução mantém o bundle pequeno e a operação simples.
+
+---
+
+## Decisão 05 — Formulário não incluído nesta etapa
+
+**Decisão:** Não adicionar formulário sem referência visual e sem definição de API, persistência ou destino dos leads.
+
+**Motivo:** Os screenshots usam WhatsApp como canal de conversão; inventar um formulário contrariaria a prioridade de fidelidade visual.
+
+---
+
+## Decisão 06 — Contraste acessível nos CTAs
+
+**Decisão:** Ajustar o verde principal de `#009b6d` para `#007a57`.
+
+**Motivo:** O audit WCAG identificou contraste de 3,55:1 nos botões. O novo tom preserva a identidade visual e eliminou as violações automáticas de contraste.
+
+---
+
+## Decisão 07 — Responsividade derivada
+
+**Decisão:** Usar breakpoints em 1100, 820 e 480 px e validar em desktop, tablet e mobile.
+
+**Motivo:** Todos os screenshots fornecidos são desktop; não há referência específica para telas menores.
+
+---
+
+## Decisão 08 — Substituição do asset do hero
+
+**Decisão:** Atualizar o CSS para usar `assets/hero-workshop.jpg` após a remoção externa do PNG anterior.
+
+**Motivo:** Manter o hero funcional e incorporar a nova foto real da fachada sem desfazer uma alteração concorrente. A diferença visual permanece registrada para confirmação.
+
+---
+
+# Surprises & Discoveries
+
+Registrar aqui qualquer descoberta durante a implementação.
+
+Exemplos:
+
+```text
+- Screenshot apresenta uma versão mobile diferente da versão desktop.
+- Fonte utilizada no screenshot não estava disponível localmente.
+- Determinada imagem do screenshot não existe nos assets do projeto.
+- Um componente visual precisou ser reproduzido com CSS.
+- A estrutura existente do projeto exigiu adaptação.
+```
+
+* Os 12 screenshots são desktop, com largura entre 1866 e 1888 px; não há screenshots tablet/mobile.
+* O repositório já continha a maior parte da implementação e três commits relevantes, mas o `PLANS.MD` estava sem acompanhamento e ainda não era versionado.
+* A referência e a implementação usam telefone, WhatsApp e endereço de exemplo; esses dados precisam ser substituídos antes da publicação.
+* O primeiro teste do container mostrou `404` para `/favicon.ico`; foi resolvido com favicon SVG embutido.
+* A primeira auditoria de acessibilidade encontrou contraste insuficiente nos CTAs; após o ajuste de cor, o audit retornou zero violações.
+* O audit não conseguiu calcular automaticamente o contraste do texto do hero por causa do gradiente. A camada clara e o texto foram conferidos visualmente.
+* O formulário descrito genericamente no plano não aparece nos screenshots e não possui backend definido.
+* Durante a validação, `assets/hero-workshop.png` foi substituído externamente por `assets/hero-workshop.jpg`, uma foto real da fachada com tamanho menor. As referências CSS foram atualizadas para manter o hero funcional.
+
+---
+
+# Artifacts and Notes
+
+Registrar aqui:
+
+### Arquivos alterados
+
+```text
+index.html — conteúdo histórico, ícones de contato, favicon e acessibilidade do menu.
+src/styles.css — ícones de contato, correção de contraste e referência da imagem do hero.
+assets/hero-workshop.jpg — nova foto da fachada incorporada como substituição do PNG removido durante a execução.
+PLANS.MD — progresso, decisões, descobertas, validação e retrospectiva.
+```
+
+### Screenshots analisados
+
+```text
+screenshots/hero.png
+screenshots/Nossos serviços.png
+screenshots/Nossa Estrutura.png
+screenshots/Nossa Estrutura2.png
+screenshots/como surgiu a salome vistorias.png
+screenshots/como surgiu a salome vistorias 2.png
+screenshots/como surgiu a salome vistorias 3.png
+screenshots/vai fazer uma vistoria.png
+screenshots/Perguntas frequentes.png
+screenshots/Perguntas frequentes 2.png
+screenshots/localizaçao.png
+screenshots/localizaçao 2.png
+```
+
+### Comandos executados
+
+```text
+Get-Content -Raw, rg --files, git status, git log, git diff
+npm run build
+docker compose ps
+docker compose logs --tail
+docker compose up -d --build
+Invoke-WebRequest http://127.0.0.1:8080/
+npx --yes agent-browser (open, set viewport, snapshot, screenshot, eval, errors, console, a11y, click, close)
+git add e git commit
+```
+
+### Testes realizados
+
+```text
+Build Vite de produção: aprovado.
+Build multi-stage do Docker: aprovado.
+Container Nginx: ativo em 0.0.0.0:8080 e resposta HTTP 200.
+Browser desktop 1879 x 939: aprovado, sem overflow e sem imagens quebradas.
+Browser tablet 768 x 1024: aprovado, sem overflow.
+Browser mobile 390 x 844: aprovado, sem overflow; menu abre e fecha após navegação.
+FAQ: abertura exclusiva e conteúdo da resposta validados.
+Console e erros de página: nenhum erro encontrado.
+Audit WCAG A/AA: zero violações; dois contrastes do hero ficaram inconclusivos por causa do gradiente.
+Comparação visual final: realizada contra todos os 12 screenshots.
+```
+
+### Observações
+
+```text
+O container permanece em execução em http://localhost:8080.
+Screenshots de validação foram gerados no diretório temporário do Windows e não foram adicionados ao repositório.
+Os links de WhatsApp usam um número placeholder e o link de mapa aponta para a página geral do Google Maps.
+Não foi criado formulário porque ele não aparece na fonte visual e não há contrato de backend.
+```
+
+---
+
+# Outcomes & Retrospective
+
+Preencher somente após a implementação.
+
+Registrar:
+
+* o que foi concluído;
+* o que ficou pendente;
+* quais partes ficaram diferentes dos screenshots;
+* quais limitações foram encontradas;
+* quais decisões foram tomadas durante a implementação;
+* quais melhorias podem ser realizadas posteriormente.
+
+## Resultado final
+
+```text
+Landing page completa e responsiva, visualmente próxima das referências, executando em Vite no desenvolvimento e em Nginx via Docker na produção. Build, container, interações, imagens, console, responsividade e acessibilidade automatizada foram validados. A foto atual do hero é uma fachada real adicionada durante a execução e difere da imagem original do screenshot.
+```
+
+## Pendências
+
+```text
+Substituir telefone, WhatsApp, endereço, Instagram e destino exato do Google Maps pelos dados reais.
+Decidir se haverá formulário de leads; se houver, definir API, persistência, consentimento e feedback antes da implementação.
+Obter screenshots mobile/tablet, caso seja necessária fidelidade visual específica nessas larguras.
+Confirmar se a nova foto da fachada deve permanecer no hero ou se a imagem da referência deve ser restaurada.
+```
+
+## Próximos passos
+
+```text
+Confirmar os dados comerciais reais e atualizar todos os CTAs externos. Depois, decidir formalmente se o fluxo de conversão permanecerá apenas no WhatsApp ou se incluirá formulário com backend.
+```

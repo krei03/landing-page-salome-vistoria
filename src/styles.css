@@ -176,7 +176,7 @@ img {
   background:
     linear-gradient(90deg, rgba(255, 255, 255, 0.98) 0%, rgba(255, 255, 255, 0.84) 35%, rgba(255, 255, 255, 0.18) 66%, rgba(0, 0, 0, 0.18) 100%),
     linear-gradient(180deg, transparent 77%, rgba(255, 255, 255, 0.82) 100%),
-    url("/assets/hero-workshop.png") center right / cover no-repeat;
+    url("/assets/hero-workshop.jpg") center right / cover no-repeat;
 }
 
 .hero-content {
@@ -990,7 +990,7 @@ img {
     background:
       linear-gradient(90deg, rgba(255, 255, 255, 0.98) 0%, rgba(255, 255, 255, 0.86) 56%, rgba(255, 255, 255, 0.36) 100%),
       linear-gradient(180deg, transparent 76%, rgba(255, 255, 255, 0.9) 100%),
-      url("/assets/hero-workshop.png") center right 28% / cover no-repeat;
+      url("/assets/hero-workshop.jpg") center right 28% / cover no-repeat;
   }
 
   .hero h1,
