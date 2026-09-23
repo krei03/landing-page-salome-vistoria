@@ -3,7 +3,7 @@
 }
 
 :root {
-  --green: #009b6d;
+  --green: #007a57;
   --green-dark: #005f47;
   --green-soft: #eafff7;
   --black: #141414;
@@ -741,16 +741,28 @@ img {
   padding-left: 68px;
 }
 
-.contact-list div::before {
-  content: "";
+.contact-list div > svg {
   position: absolute;
   left: 0;
   top: 0;
   width: 48px;
   height: 48px;
+  padding: 12px;
   border: 1px solid var(--line);
   border-radius: 9px;
   background: #fff;
+  fill: none;
+  stroke: #444;
+  stroke-width: 1.8;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.contact-list div:first-child > svg {
+  color: var(--green);
+  background: var(--green-soft);
+  border-color: #91eccf;
+  stroke: currentColor;
 }
 
 .contact-list span {
