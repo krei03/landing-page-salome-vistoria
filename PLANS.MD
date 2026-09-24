@@ -1114,7 +1114,7 @@ Caso o formulário precise de backend, API ou banco de dados, essa integração 
 
 ## Decisão 18 — Hover sutil em cards e imagens
 
-**Decisão:** Aplicar elevação de 4 px, sombra e borda verde suave aos cards, além de zoom de 2,5% e leve saturação nas imagens.
+**Decisão:** Aplicar elevação de 4 px, sombra e borda verde suave aos cards, além de zoom discreto de 1% e leve saturação nas imagens.
 
 **Motivo:** Dar resposta visual ao cursor sem alterar a composição da página. Os efeitos ficam restritos a dispositivos com mouse e respeitam `prefers-reduced-motion`.
 
@@ -1231,7 +1231,7 @@ Modal tablet 768 x 1024 e mobile 390 x 844: aprovados, com rolagem interna quand
 Audit WCAG A/AA após os modais: zero violações; contrastes sobre o hero e seis pequenos elementos ficaram inconclusivos para revisão manual.
 Comparação visual final: realizada contra os 14 screenshots disponíveis.
 Tipografia após restauração: corpo confirmado em `Plus Jakarta Sans` e botão do header confirmado em `Arial`, como antes da implementação dos modais.
-Hover em desktop 1440 x 900: card confirmou `translateY(-4px)`, imagem confirmou escala `1.025`, sem overflow horizontal e sem erros no console.
+Hover em desktop 1440 x 900: card confirmou `translateY(-4px)` e a imagem foi ajustada para escala `1.01`, sem overflow horizontal e sem erros no console.
 ```
 
 ### Commits criados nesta etapa
