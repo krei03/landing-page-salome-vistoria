@@ -1124,6 +1124,12 @@ Caso o formulário precise de backend, API ou banco de dados, essa integração 
 
 **Motivo:** Ajuste visual solicitado pelo responsável do projeto; o título foi realinhado para ocupar naturalmente o espaço liberado.
 
+## Decisão 20 — Nova imagem na aba do navegador
+
+**Decisão:** Substituir o favicon SVG pelo arquivo `assets/logo - 2.jpg` fornecido pelo responsável do projeto.
+
+**Motivo:** Usar a nova marca com carro e sinal verde como identificação visual da aba do navegador, sem alterar a logo exibida no cabeçalho.
+
 ---
 
 # Surprises & Discoveries
@@ -1172,6 +1178,7 @@ Registrar aqui:
 index.html — conteúdo histórico, contatos reais, FAQ, mapa interativo, rotas externas, favicon, nova logo, título bicolor, botões de abertura, estrutura semântica dos modais e remoção do escudo no modal de serviço.
 src/main.js — controle de abertura e fechamento, conteúdo específico dos três serviços, seleção de vistoria, validação e montagem da mensagem de agendamento para o WhatsApp.
 src/styles.css — mapa responsivo, menu de rotas, contraste, imagem do hero, escala visual, modais, tipografia dos controles e interações de hover em cards e imagens.
+assets/logo - 2.jpg — nova imagem usada como favicon na aba do navegador.
 assets/hero-workshop.jpg — nova foto da fachada incorporada como substituição do PNG removido durante a execução.
 assets/logo-transparent.png — marca com transparência real utilizada no Header/Navbar.
 PLANS.MD — progresso, decisões, descobertas, validação e retrospectiva.
@@ -1239,6 +1246,7 @@ Comparação visual final: realizada contra os 14 screenshots disponíveis.
 Tipografia após restauração: corpo confirmado em `Plus Jakarta Sans` e botão do header confirmado em `Arial`, como antes da implementação dos modais.
 Hover em desktop 1440 x 900: card confirmou `translateY(-4px)` e a imagem foi ajustada para escala `1.01`, sem overflow horizontal e sem erros no console.
 Modal de serviço sem escudo: confirmado visualmente em 1440 x 900; nenhum ícone no cabeçalho de serviço e calendário preservado no agendamento.
+Favicon: `assets/logo - 2.jpg` incluído no build Vite e servido pelo Docker como `image/jpeg` com URL versionada.
 ```
 
 ### Commits criados nesta etapa
