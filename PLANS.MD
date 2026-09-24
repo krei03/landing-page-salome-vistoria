@@ -135,6 +135,11 @@ Solicitar orçamento / contato
 * [x] Criar formulário de captura de leads, caso exista ou seja necessário. Não aplicável à referência atual, que usa CTAs de WhatsApp e não apresenta formulário.
 * [x] Criar Footer conforme a referência visual.
 * [x] Criar componentes reutilizáveis quando fizer sentido. A página estática reutiliza classes de botão, card, container e heading.
+* [x] Substituir a imagem estática da seção "Localização" por um Google Maps real e interativo.
+* [x] Configurar o mapa para o endereço da Salomé Vistoria: Avenida Antônio Emmerick, 156 - Vila Cascatinha, São Vicente - SP.
+* [x] Adicionar ação "Como chegar" permitindo escolher entre Google Maps e Waze.
+* [x] Adicionar interação visual suave ao mapa e ao card de localização.
+* [x] Garantir que mapa e ações de navegação funcionem corretamente no desktop e mobile.
 
 ## Visual
 
@@ -495,6 +500,68 @@ Identificar padrões de:
 
 Esses padrões devem ser reutilizados para manter consistência.
 
+## 11. Localização interativa da Salomé Vistoria
+
+### Google Maps
+
+Na seção de localização, remover a imagem estática que simula o Google Maps.
+
+No mesmo espaço visual, incorporar um mapa real e interativo apontando para:
+
+Avenida Antônio Emmerick, 156
+Vila Cascatinha
+São Vicente - SP
+
+O mapa deve permitir interação normal do usuário, incluindo movimentação e zoom quando disponíveis.
+
+Manter o mapa integrado ao design atual da landing page, respeitando:
+
+- border-radius;
+- tamanho do container;
+- espaçamento;
+- responsividade;
+- identidade visual da Salomé Vistoria.
+
+### Como chegar
+
+Adicionar uma ação clara:
+
+"Como chegar"
+
+Ao clicar, apresentar duas opções:
+
+- Abrir no Google Maps
+- Abrir no Waze
+
+As duas opções devem utilizar o endereço real da Salomé Vistoria como destino.
+
+Em dispositivos móveis, os links devem permitir que o sistema abra o aplicativo correspondente quando disponível.
+
+Não substituir a página atual imediatamente ao clicar no mapa. A escolha entre Google Maps e Waze deve ser clara para o usuário.
+
+### Interação visual
+
+Adicionar uma interação simples e moderna ao container do mapa.
+
+No desktop, ao passar o mouse:
+
+- elevar levemente o card;
+- aumentar suavemente a sombra;
+- aplicar uma transição curta;
+- destacar discretamente a ação "Como chegar".
+
+A animação deve ser sutil e profissional.
+
+Evitar:
+
+- movimentos exagerados;
+- card flutuando continuamente;
+- animações infinitas;
+- zoom excessivo;
+- efeitos que atrapalhem a utilização do mapa.
+
+A interação deve dar mais vida à seção sem descaracterizar o layout original.
+
 ---
 
 # Concrete Steps
@@ -530,6 +597,24 @@ screenshots/
 ```
 
 conforme a estrutura real do projeto.
+## 12. Implementar localização interativa
+
+1. Localizar a seção de localização existente.
+2. Remover somente a imagem estática utilizada atualmente como mapa.
+3. Preservar a estrutura e os textos existentes da seção.
+4. Incorporar um Google Maps real no mesmo espaço visual.
+5. Configurar o destino para "Avenida Antônio Emmerick, 156 - Vila Cascatinha, São Vicente - SP".
+6. Garantir que o mapa seja responsivo.
+7. Criar a ação "Como chegar".
+8. Criar opção para abrir o destino no Google Maps.
+9. Criar opção para abrir o destino no Waze.
+10. Abrir os serviços externos de navegação sem quebrar a landing page.
+11. Adicionar hover suave no container do mapa/card no desktop.
+12. Usar `transform: translateY(...)`, sombra e `transition` de forma sutil.
+13. Não aplicar hover dependente de mouse como requisito para uso no mobile.
+14. Validar a seção em desktop, tablet e mobile.
+15. Verificar se o endereço mostrado e o destino dos links correspondem ao mesmo local.
+16. Atualizar o Progress somente após a validação.
 
 ---
 
@@ -773,6 +858,18 @@ A implementação será considerada concluída quando todos os critérios abaixo
 * [x] Responsividade foi validada.
 * [x] Comparação final com os screenshots foi realizada.
 
+* [x] A seção de localização utiliza um mapa real em vez de uma imagem estática.
+* [x] O mapa aponta para Avenida Antônio Emmerick, 156 - Vila Cascatinha, São Vicente - SP.
+* [x] O usuário consegue interagir com o mapa.
+* [x] A ação "Como chegar" funciona.
+* [x] Existe opção para abrir no Google Maps.
+* [x] Existe opção para abrir no Waze.
+* [x] Os dois serviços recebem corretamente o endereço da Salomé Vistoria como destino.
+* [x] A interação visual do card/mapa funciona sem atrapalhar a navegação.
+* [x] O mapa continua proporcional no desktop.
+* [x] O mapa funciona corretamente no mobile.
+* [x] Não existe overflow horizontal causado pelo mapa.
+
 ---
 
 # Interfaces and Dependencies
@@ -885,6 +982,24 @@ Caso o formulário precise de backend, API ou banco de dados, essa integração 
 
 **Motivo:** Os dados foram fornecidos pelo responsável do projeto e substituem os placeholders usados durante a reprodução visual.
 
+## Decisão 12 — Localização real e navegação externa
+
+**Decisão:** Substituir a imagem estática da seção de localização por um Google Maps interativo apontando para a unidade da Salomé Vistoria na Avenida Antônio Emmerick, 156 - Vila Cascatinha, São Vicente - SP.
+
+**Decisão:** Disponibilizar ao usuário a escolha entre Google Maps e Waze através da ação "Como chegar".
+
+**Decisão:** Adicionar uma interação visual sutil ao card do mapa, utilizando elevação, sombra e transição no hover.
+
+**Motivo:** Tornar a seção de localização realmente útil, facilitar a criação de rotas até a empresa e adicionar interação ao site sem fugir da identidade visual existente.
+
+---
+
+## Decisão 13 — Mapa incorporado sem chave de API
+
+**Decisão:** Usar o endpoint de incorporação por consulta do Google Maps em um `iframe`, o formato oficial de Maps URLs para a rota do Google e o Universal Link do Waze com endereço codificado.
+
+**Motivo:** A solução entrega mapa interativo e abertura dos aplicativos sem adicionar SDK, dependência JavaScript ou chave de API ao projeto estático.
+
 ---
 
 # Surprises & Discoveries
@@ -911,6 +1026,9 @@ Exemplos:
 * Durante a validação, `assets/hero-workshop.png` foi substituído externamente por `assets/hero-workshop.jpg`, uma foto real da fachada com tamanho menor. As referências CSS foram atualizadas para manter o hero funcional.
 * A logo JPG fornecida continha um quadriculado de transparência gravado. Foi criada `assets/logo-transparent.png` e o header passou a usar `object-fit: contain`.
 * A sensação de zoom não vinha do navegador: em 1440 px, o container de 1328 px, o H1 de 66 px e o header de 98 px mantinham uma escala próxima da referência de 1880 px. A viewport final foi confirmada com `visualViewport.scale = 1`.
+* O Google Maps normaliza visualmente o logradouro para "Avenida Antônio Emmerich", embora os registros e o requisito usem "Emmerick"; a consulta com o endereço solicitado posicionou o marcador no número 156.
+* O navegador headless não anuncia suporte a `hover: hover`, portanto a elevação foi validada pela regra CSS e mantida restrita a mouse/trackpad. O menu, o mapa e as rotas foram testados por interação real.
+* A auditoria após o mapa identificou que o WhatsApp flutuante estava fora de landmarks semânticos. O link foi envolvido em um `aside` rotulado, eliminando a violação.
 
 ---
 
@@ -921,8 +1039,8 @@ Registrar aqui:
 ### Arquivos alterados
 
 ```text
-index.html — conteúdo histórico, contatos reais, FAQ com consulta oficial do Detran, favicon, acessibilidade do menu, nova logo e título bicolor do hero.
-src/styles.css — links do FAQ e de contato, ícones, contraste, imagem do hero, logo proporcional e nova escala visual.
+index.html — conteúdo histórico, contatos reais, FAQ com consulta oficial do Detran, mapa interativo, rotas externas, favicon, acessibilidade do menu, nova logo e título bicolor do hero.
+src/styles.css — mapa responsivo, menu de rotas, hover do card, links do FAQ e de contato, ícones, contraste, imagem do hero, logo proporcional e nova escala visual.
 assets/hero-workshop.jpg — nova foto da fachada incorporada como substituição do PNG removido durante a execução.
 assets/logo-transparent.png — marca com transparência real utilizada no Header/Navbar.
 PLANS.MD — progresso, decisões, descobertas, validação e retrospectiva.
@@ -954,7 +1072,8 @@ docker compose ps
 docker compose logs --tail
 docker compose up -d --build
 Invoke-WebRequest http://127.0.0.1:8080/
-npx --yes agent-browser (open, set viewport, snapshot, screenshot, eval, errors, console, a11y, click, close)
+npx --yes agent-browser (open, set viewport, snapshot, screenshot, eval, errors, console, a11y, click, hover, close)
+Pesquisa web do endereço comercial e das documentações oficiais de Maps URLs e Waze Deep Links
 git add e git commit
 ```
 
@@ -969,9 +1088,13 @@ Browser desktop 1440 x 900 em zoom 100%: aprovado; `visualViewport.scale = 1`, e
 Browser tablet 768 x 1024: aprovado, sem overflow.
 Browser mobile 390 x 844: aprovado, sem overflow; menu abre e fecha após navegação.
 FAQ: abertura exclusiva, pergunta sobre credenciamento e link oficial do Detran validados.
+Mapa: Google Maps incorporado carregou o marcador da Avenida Antônio Emmerick, 156; movimentação e controles visíveis.
+Rotas: menu "Como chegar" e destinos codificados para Google Maps e Waze validados.
+Localização desktop 1879 x 939, tablet 768 x 1024 e mobile 390 x 844: aprovada, sem overflow.
 Console e erros de página: nenhum erro encontrado.
 Audit WCAG A/AA: zero violações; dois contrastes do hero ficaram inconclusivos por causa do gradiente.
 Audit WCAG após título bicolor: zero violações; os três textos sobre o gradiente do hero ficaram inconclusivos para cálculo automático e foram conferidos visualmente.
+Audit WCAG após mapa interativo: zero violações; os três contrastes do hero sobre fotografia permanecem inconclusivos e foram conferidos visualmente.
 Comparação visual final: realizada contra todos os 12 screenshots.
 ```
 
@@ -980,7 +1103,8 @@ Comparação visual final: realizada contra todos os 12 screenshots.
 ```text
 O container permanece em execução em http://localhost:8080.
 Screenshots de validação foram gerados no diretório temporário do Windows e não foram adicionados ao repositório.
-Os links de WhatsApp usam o número real `5513996576383`; o telefone fixo exibido é `(13) 3878-0078`. O link de mapa ainda aponta para a página geral do Google Maps.
+Os links de WhatsApp usam o número real `5513996576383`; o telefone fixo exibido é `(13) 3878-0078`. Endereço, mapa e rotas usam a Avenida Antônio Emmerick, 156.
+O asset `assets/mapa.png` foi mantido no repositório como material original, mas não é mais referenciado nem incluído no build.
 Não foi criado formulário porque ele não aparece na fonte visual e não há contrato de backend.
 A escala foi corrigida por propriedades individuais de layout; nenhum `zoom` CSS foi adicionado.
 ```
@@ -1003,13 +1127,13 @@ Registrar:
 ## Resultado final
 
 ```text
-Landing page completa e responsiva, visualmente próxima das referências, executando em Vite no desenvolvimento e em Nginx via Docker na produção. A nova logo está no header, o título do hero foi dividido entre branco e verde e a escala geral foi normalizada para zoom 100%. Build, container, interações, imagens, console, responsividade e acessibilidade automatizada foram validados. A foto atual do hero é uma fachada real adicionada durante a execução e difere da imagem original do screenshot.
+Landing page completa e responsiva, visualmente próxima das referências, executando em Vite no desenvolvimento e em Nginx via Docker na produção. A nova logo está no header, o título do hero foi dividido entre branco e verde, a escala geral foi normalizada para zoom 100% e a localização agora possui mapa interativo com rotas por Google Maps e Waze. Build, container, interações, imagens, console, responsividade e acessibilidade automatizada foram validados. A foto atual do hero é uma fachada real adicionada durante a execução e difere da imagem original do screenshot.
 ```
 
 ## Pendências
 
 ```text
-Substituir endereço, Instagram e destino exato do Google Maps pelos dados reais.
+Confirmar o perfil oficial do Instagram e transformá-lo em link.
 Decidir se haverá formulário de leads; se houver, definir API, persistência, consentimento e feedback antes da implementação.
 Obter screenshots mobile/tablet, caso seja necessária fidelidade visual específica nessas larguras.
 Confirmar se a nova foto da fachada deve permanecer no hero ou se a imagem da referência deve ser restaurada.
@@ -1018,5 +1142,5 @@ Confirmar se a nova foto da fachada deve permanecer no hero ou se a imagem da re
 ## Próximos passos
 
 ```text
-Confirmar endereço, Instagram e destino exato do Google Maps. Depois, decidir formalmente se o fluxo de conversão permanecerá apenas no WhatsApp ou se incluirá formulário com backend.
+Confirmar o perfil oficial do Instagram. Depois, decidir formalmente se o fluxo de conversão permanecerá apenas no WhatsApp ou se incluirá formulário com backend.
 ```
