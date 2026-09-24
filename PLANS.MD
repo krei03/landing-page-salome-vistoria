@@ -1130,6 +1130,12 @@ Caso o formulário precise de backend, API ou banco de dados, essa integração 
 
 **Motivo:** Usar a nova marca com carro e sinal verde como identificação visual da aba do navegador, sem alterar a logo exibida no cabeçalho.
 
+## Decisão 21 — Ampliação dos tipos de agendamento
+
+**Decisão:** Adicionar ao seletor as vistorias para remarcação de chassi e/ou motor, baixa permanente e atendimento móvel para veículos pesados.
+
+**Motivo:** Permitir que a mensagem enviada ao WhatsApp identifique corretamente os novos serviços solicitados, mantendo o mesmo formulário e fluxo de atendimento.
+
 ---
 
 # Surprises & Discoveries
@@ -1178,7 +1184,7 @@ Registrar aqui:
 index.html — conteúdo histórico, contatos reais, FAQ, mapa interativo, rotas externas, favicon, nova logo, título bicolor, botões de abertura, estrutura semântica dos modais e remoção do escudo no modal de serviço.
 src/main.js — controle de abertura e fechamento, conteúdo específico dos três serviços, seleção de vistoria, validação e montagem da mensagem de agendamento para o WhatsApp.
 src/styles.css — mapa responsivo, menu de rotas, contraste, imagem do hero, escala visual, modais, tipografia dos controles e interações de hover em cards e imagens.
-assets/logo - 2.jpg — nova imagem usada como favicon na aba do navegador.
+assets/logo - 2.jpg — versão atualizada da imagem usada como favicon na aba do navegador.
 assets/hero-workshop.jpg — nova foto da fachada incorporada como substituição do PNG removido durante a execução.
 assets/logo-transparent.png — marca com transparência real utilizada no Header/Navbar.
 PLANS.MD — progresso, decisões, descobertas, validação e retrospectiva.
@@ -1247,6 +1253,8 @@ Tipografia após restauração: corpo confirmado em `Plus Jakarta Sans` e botão
 Hover em desktop 1440 x 900: card confirmou `translateY(-4px)` e a imagem foi ajustada para escala `1.01`, sem overflow horizontal e sem erros no console.
 Modal de serviço sem escudo: confirmado visualmente em 1440 x 900; nenhum ícone no cabeçalho de serviço e calendário preservado no agendamento.
 Favicon: `assets/logo - 2.jpg` incluído no build Vite e servido pelo Docker como `image/jpeg` com URL versionada.
+Tipos de agendamento: seis opções confirmadas; os três novos serviços foram validados na mensagem do WhatsApp e a opção mais longa não gerou overflow em 390 x 844.
+Favicon atualizado: nova versão incluída no build como `logo - 2-DFC8pUOh.jpg` e carregada pelo navegador.
 ```
 
 ### Commits criados nesta etapa
