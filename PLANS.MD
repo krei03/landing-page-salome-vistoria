@@ -841,7 +841,7 @@ A implementação será considerada concluída quando todos os critérios abaixo
 
 * [x] CTAs funcionam.
 * [x] Links internos funcionam e os links externos possuem destinos válidos.
-* [x] WhatsApp aponta para o número real da empresa: `5513996576383`.
+* [x] WhatsApp exibe `(13) 97417-8999` e todos os CTAs apontam para `551338780078`, conforme orientação comercial.
 * [ ] Formulário funciona.
 * [ ] Campos obrigatórios possuem validação.
 * [ ] Usuário recebe feedback após envio.
@@ -982,6 +982,8 @@ Caso o formulário precise de backend, API ou banco de dados, essa integração 
 
 **Motivo:** Os dados foram fornecidos pelo responsável do projeto e substituem os placeholders usados durante a reprodução visual.
 
+**Status:** A configuração do WhatsApp foi posteriormente substituída pela Decisão 14.
+
 ## Decisão 12 — Localização real e navegação externa
 
 **Decisão:** Substituir a imagem estática da seção de localização por um Google Maps interativo apontando para a unidade da Salomé Vistoria na Avenida Antônio Emmerick, 156 - Vila Cascatinha, São Vicente - SP.
@@ -999,6 +1001,14 @@ Caso o formulário precise de backend, API ou banco de dados, essa integração 
 **Decisão:** Usar o endpoint de incorporação por consulta do Google Maps em um `iframe`, o formato oficial de Maps URLs para a rota do Google e o Universal Link do Waze com endereço codificado.
 
 **Motivo:** A solução entrega mapa interativo e abertura dos aplicativos sem adicionar SDK, dependência JavaScript ou chave de API ao projeto estático.
+
+---
+
+## Decisão 14 — Número exibido e destino do WhatsApp distintos
+
+**Decisão:** Exibir `(13) 97417-8999` como contato de WhatsApp, mas direcionar todos os CTAs e o botão flutuante para `wa.me/551338780078`.
+
+**Motivo:** O responsável do projeto solicitou explicitamente que o número apresentado ao visitante seja diferente do número usado para iniciar a conversa.
 
 ---
 
@@ -1029,6 +1039,7 @@ Exemplos:
 * O Google Maps normaliza visualmente o logradouro para "Avenida Antônio Emmerich", embora os registros e o requisito usem "Emmerick"; a consulta com o endereço solicitado posicionou o marcador no número 156.
 * O navegador headless não anuncia suporte a `hover: hover`, portanto a elevação foi validada pela regra CSS e mantida restrita a mouse/trackpad. O menu, o mapa e as rotas foram testados por interação real.
 * A auditoria após o mapa identificou que o WhatsApp flutuante estava fora de landmarks semânticos. O link foi envolvido em um `aside` rotulado, eliminando a violação.
+* O número exibido como WhatsApp e o destino dos links são intencionalmente diferentes por solicitação comercial; essa divergência não deve ser normalizada automaticamente.
 
 ---
 
@@ -1088,6 +1099,7 @@ Browser desktop 1440 x 900 em zoom 100%: aprovado; `visualViewport.scale = 1`, e
 Browser tablet 768 x 1024: aprovado, sem overflow.
 Browser mobile 390 x 844: aprovado, sem overflow; menu abre e fecha após navegação.
 FAQ: abertura exclusiva, pergunta sobre credenciamento e link oficial do Detran validados.
+WhatsApp: seis links validados com destino `wa.me/551338780078`; contato visível validado como `(13) 97417-8999` em desktop e mobile.
 Mapa: Google Maps incorporado carregou o marcador da Avenida Antônio Emmerick, 156; movimentação e controles visíveis.
 Rotas: menu "Como chegar" e destinos codificados para Google Maps e Waze validados.
 Localização desktop 1879 x 939, tablet 768 x 1024 e mobile 390 x 844: aprovada, sem overflow.
@@ -1103,7 +1115,7 @@ Comparação visual final: realizada contra todos os 12 screenshots.
 ```text
 O container permanece em execução em http://localhost:8080.
 Screenshots de validação foram gerados no diretório temporário do Windows e não foram adicionados ao repositório.
-Os links de WhatsApp usam o número real `5513996576383`; o telefone fixo exibido é `(13) 3878-0078`. Endereço, mapa e rotas usam a Avenida Antônio Emmerick, 156.
+O WhatsApp exibido é `(13) 97417-8999`, enquanto todos os links usam `wa.me/551338780078`. O telefone fixo exibido é `(13) 3878-0078`. Endereço, mapa e rotas usam a Avenida Antônio Emmerick, 156.
 O asset `assets/mapa.png` foi mantido no repositório como material original, mas não é mais referenciado nem incluído no build.
 Não foi criado formulário porque ele não aparece na fonte visual e não há contrato de backend.
 A escala foi corrigida por propriedades individuais de layout; nenhum `zoom` CSS foi adicionado.
