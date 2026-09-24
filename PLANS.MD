@@ -1106,6 +1106,12 @@ Caso o formulário precise de backend, API ou banco de dados, essa integração 
 
 **Motivo:** `dialog` fornece foco modal, fechamento por `Esc` e backdrop sem dependências. O fluxo preserva os campos do screenshot e mantém o projeto estático, sem simular persistência ou backend inexistente.
 
+## Decisão 17 — Preservar a tipografia original dos controles
+
+**Decisão:** Remover a herança global de fonte adicionada a botões e campos durante a implementação dos modais.
+
+**Motivo:** A regra alterou a tipografia dos controles que já existiam. O conteúdo permanece em `Plus Jakarta Sans`, enquanto os controles voltam ao comportamento anterior do navegador.
+
 ---
 
 # Surprises & Discoveries
@@ -1140,6 +1146,7 @@ Exemplos:
 * Caminhos de imagens definidos apenas em JavaScript não foram reescritos pelo Vite no primeiro build. A solução foi criar as URLs com `new URL(..., import.meta.url)` para que os três assets sejam incluídos no bundle.
 * O elemento nativo `dialog` não herdou automaticamente a família tipográfica do `body`; a fonte foi aplicada explicitamente ao modal antes da comparação final.
 * A referência de agendamento contém formulário, mas não indica armazenamento de lead nem backend. O envio foi implementado como mensagem estruturada para o WhatsApp.
+* A declaração global `font: inherit` aplicada aos controles também alterou a fonte dos botões preexistentes. A regra foi removida após a solicitação de restauração visual.
 
 ---
 
@@ -1152,7 +1159,7 @@ Registrar aqui:
 ```text
 index.html — conteúdo histórico, contatos reais, FAQ, mapa interativo, rotas externas, favicon, nova logo, título bicolor, botões de abertura e estrutura semântica dos modais de serviço e agendamento.
 src/main.js — controle de abertura e fechamento, conteúdo específico dos três serviços, seleção de vistoria, validação e montagem da mensagem de agendamento para o WhatsApp.
-src/styles.css — mapa responsivo, menu de rotas, contraste, imagem do hero, escala visual e reprodução responsiva dos dois novos modais.
+src/styles.css — mapa responsivo, menu de rotas, contraste, imagem do hero, escala visual, reprodução responsiva dos modais e restauração da tipografia original dos controles.
 assets/hero-workshop.jpg — nova foto da fachada incorporada como substituição do PNG removido durante a execução.
 assets/logo-transparent.png — marca com transparência real utilizada no Header/Navbar.
 PLANS.MD — progresso, decisões, descobertas, validação e retrospectiva.
@@ -1217,6 +1224,7 @@ Modal desktop 1879 x 939: serviço com 616 x 886 px, imagem de 410 px e agendame
 Modal tablet 768 x 1024 e mobile 390 x 844: aprovados, com rolagem interna quando necessária e sem overflow horizontal.
 Audit WCAG A/AA após os modais: zero violações; contrastes sobre o hero e seis pequenos elementos ficaram inconclusivos para revisão manual.
 Comparação visual final: realizada contra os 14 screenshots disponíveis.
+Tipografia após restauração: corpo confirmado em `Plus Jakarta Sans` e botão do header confirmado em `Arial`, como antes da implementação dos modais.
 ```
 
 ### Commits criados nesta etapa

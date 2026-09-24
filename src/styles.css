@@ -34,9 +34,7 @@ body {
 body,
 button,
 input,
-textarea,
-select {
-  font: inherit;
+textarea {
   letter-spacing: 0;
 }
 
