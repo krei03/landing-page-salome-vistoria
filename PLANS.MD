@@ -1219,6 +1219,12 @@ Audit WCAG A/AA após os modais: zero violações; contrastes sobre o hero e sei
 Comparação visual final: realizada contra os 14 screenshots disponíveis.
 ```
 
+### Commits criados nesta etapa
+
+```text
+ab6bc54 feat: adiciona modais de servicos e agendamento
+```
+
 ### Observações
 
 ```text
