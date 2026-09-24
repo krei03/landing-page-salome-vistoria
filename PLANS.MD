@@ -1150,6 +1150,12 @@ Caso o formulário precise de backend, API ou banco de dados, essa integração 
 
 **Motivo:** O ambiente do responsável do projeto deixou de exibir as animações solicitadas. Os efeitos permanecem curtos, leves e exclusivos para dispositivos com mouse.
 
+## Decisão 24 — ChevronRight do Lucide no FAQ
+
+**Decisão:** Substituir os caracteres das setas do FAQ pelo ícone `ChevronRight` do pacote oficial `lucide`, rotacionando o mesmo SVG em 90 graus por CSS quando o elemento `<details>` possui o atributo `open`.
+
+**Motivo:** O projeto usa JavaScript puro, não React; `lucide` oferece o mesmo ícone sem introduzir React. O estado nativo existente é reutilizado, sem lógica paralela, e a rotação usa transição de 250 ms.
+
 ---
 
 # Surprises & Discoveries
@@ -1187,6 +1193,7 @@ Exemplos:
 * A declaração global `font: inherit` aplicada aos controles também alterou a fonte dos botões preexistentes. A regra foi removida após a solicitação de restauração visual.
 * A versão atualizada de `logo - 2.jpg` simulava transparência com um quadriculado gravado e tinha proporção horizontal de 3:1, causando fundo cinza e marca muito pequena na aba.
 * A regra de redução de movimento podia eliminar as transições de hover conforme a configuração de animações do sistema operacional, fazendo os efeitos parecerem ausentes.
+* A implementação não usa React, portanto adicionar `lucide-react` traria uma runtime desnecessária. O pacote oficial `lucide` atende ao mesmo desenho no ambiente atual.
 
 ---
 
@@ -1198,8 +1205,9 @@ Registrar aqui:
 
 ```text
 index.html — conteúdo histórico, contatos reais, FAQ, mapa interativo, rotas externas, favicon, nova logo, título bicolor, botões de abertura, estrutura semântica dos modais e remoção do escudo no modal de serviço.
-src/main.js — controle de abertura e fechamento, conteúdo específico dos três serviços, seleção de vistoria, validação e montagem da mensagem de agendamento para o WhatsApp.
-src/styles.css — mapa responsivo, menu de rotas, contraste, imagem do hero, escala visual, modais, tipografia dos controles e interações de hover em cards e imagens.
+src/main.js — controle de abertura e fechamento, conteúdo dos serviços, agendamento para WhatsApp e inicialização do `ChevronRight` do Lucide.
+src/styles.css — mapa responsivo, modais, interações de hover e rotação de 250 ms do `ChevronRight` conforme o estado do FAQ.
+package.json e package-lock.json — dependência oficial `lucide` para os ícones do FAQ.
 assets/logo - 2.jpg — imagem original fornecida e usada como referência para o favicon.
 assets/favicon.png — favicon quadrado com transparência real, recortado no símbolo do carro e sinal verde.
 assets/hero-workshop.jpg — nova foto da fachada incorporada como substituição do PNG removido durante a execução.
@@ -1274,6 +1282,9 @@ Tipos de agendamento: seis opções confirmadas; os três novos serviços foram 
 Favicon atualizado: nova versão incluída no build como `logo - 2-DFC8pUOh.jpg` e carregada pelo navegador.
 Favicon final: PNG 1254 x 1254 com canal alfa confirmado, incluído no build como `favicon-B7HVwODx.png` e carregado como `image/png`.
 Animações restauradas: card confirmado com transição de `0.18s` e `translateY(-4px)`; imagem confirmada com transição de `0.22s` e escala `1.01`.
+FAQ desktop 1440 x 900: sete `ChevronRight` renderizados; fechado sem rotação, aberto em 90 graus, duração de 250 ms e abertura exclusiva preservada.
+FAQ mobile 390 x 844: rotação individual e ausência de overflow horizontal confirmadas.
+Audit WCAG A/AA após os ícones do FAQ: zero violações; apenas contrastes do hero sobre fotografia permaneceram inconclusivos.
 ```
 
 ### Commits criados nesta etapa

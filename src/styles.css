@@ -726,17 +726,16 @@ img {
   display: none;
 }
 
-.faq-list summary::after {
-  content: "⌄";
+.faq-chevron {
   width: 39px;
   height: 39px;
   flex: 0 0 auto;
-  display: grid;
-  place-items: center;
+  padding: 9px;
   background: #e9e9e9;
   border-radius: 50%;
   color: #555;
-  font-size: 24px;
+  stroke-width: 2;
+  transition: transform 250ms ease, color 180ms ease, background-color 180ms ease;
 }
 
 .faq-list details[open] summary {
@@ -744,10 +743,10 @@ img {
   border-bottom: 2px solid #00c98e;
 }
 
-.faq-list details[open] summary::after {
-  content: "⌃";
+.faq-list details[open] .faq-chevron {
   color: #fff;
   background: var(--green);
+  transform: rotate(90deg);
 }
 
 .faq-list details p {
