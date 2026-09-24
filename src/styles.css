@@ -1165,9 +1165,6 @@ body:has(dialog[open]) {
 }
 
 .service-modal-header {
-  display: flex;
-  align-items: center;
-  gap: 16px;
   padding-right: 45px;
 }
 
@@ -1568,11 +1565,6 @@ body:has(dialog[open]) {
   .modal-close {
     top: 20px;
     right: 20px;
-  }
-
-  .service-modal-header {
-    align-items: flex-start;
-    gap: 13px;
   }
 
   .service-modal h2,

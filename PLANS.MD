@@ -1118,6 +1118,12 @@ Caso o formulário precise de backend, API ou banco de dados, essa integração 
 
 **Motivo:** Dar resposta visual ao cursor sem alterar a composição da página. Os efeitos ficam restritos a dispositivos com mouse e respeitam `prefers-reduced-motion`.
 
+## Decisão 19 — Remoção do escudo no modal de serviço
+
+**Decisão:** Remover o ícone de escudo verde do cabeçalho do modal "Saiba mais", mantendo o ícone de calendário do agendamento.
+
+**Motivo:** Ajuste visual solicitado pelo responsável do projeto; o título foi realinhado para ocupar naturalmente o espaço liberado.
+
 ---
 
 # Surprises & Discoveries
@@ -1163,7 +1169,7 @@ Registrar aqui:
 ### Arquivos alterados
 
 ```text
-index.html — conteúdo histórico, contatos reais, FAQ, mapa interativo, rotas externas, favicon, nova logo, título bicolor, botões de abertura e estrutura semântica dos modais de serviço e agendamento.
+index.html — conteúdo histórico, contatos reais, FAQ, mapa interativo, rotas externas, favicon, nova logo, título bicolor, botões de abertura, estrutura semântica dos modais e remoção do escudo no modal de serviço.
 src/main.js — controle de abertura e fechamento, conteúdo específico dos três serviços, seleção de vistoria, validação e montagem da mensagem de agendamento para o WhatsApp.
 src/styles.css — mapa responsivo, menu de rotas, contraste, imagem do hero, escala visual, modais, tipografia dos controles e interações de hover em cards e imagens.
 assets/hero-workshop.jpg — nova foto da fachada incorporada como substituição do PNG removido durante a execução.
@@ -1232,6 +1238,7 @@ Audit WCAG A/AA após os modais: zero violações; contrastes sobre o hero e sei
 Comparação visual final: realizada contra os 14 screenshots disponíveis.
 Tipografia após restauração: corpo confirmado em `Plus Jakarta Sans` e botão do header confirmado em `Arial`, como antes da implementação dos modais.
 Hover em desktop 1440 x 900: card confirmou `translateY(-4px)` e a imagem foi ajustada para escala `1.01`, sem overflow horizontal e sem erros no console.
+Modal de serviço sem escudo: confirmado visualmente em 1440 x 900; nenhum ícone no cabeçalho de serviço e calendário preservado no agendamento.
 ```
 
 ### Commits criados nesta etapa
