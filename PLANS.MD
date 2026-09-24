@@ -1112,6 +1112,12 @@ Caso o formulário precise de backend, API ou banco de dados, essa integração 
 
 **Motivo:** A regra alterou a tipografia dos controles que já existiam. O conteúdo permanece em `Plus Jakarta Sans`, enquanto os controles voltam ao comportamento anterior do navegador.
 
+## Decisão 18 — Hover sutil em cards e imagens
+
+**Decisão:** Aplicar elevação de 4 px, sombra e borda verde suave aos cards, além de zoom de 2,5% e leve saturação nas imagens.
+
+**Motivo:** Dar resposta visual ao cursor sem alterar a composição da página. Os efeitos ficam restritos a dispositivos com mouse e respeitam `prefers-reduced-motion`.
+
 ---
 
 # Surprises & Discoveries
@@ -1159,7 +1165,7 @@ Registrar aqui:
 ```text
 index.html — conteúdo histórico, contatos reais, FAQ, mapa interativo, rotas externas, favicon, nova logo, título bicolor, botões de abertura e estrutura semântica dos modais de serviço e agendamento.
 src/main.js — controle de abertura e fechamento, conteúdo específico dos três serviços, seleção de vistoria, validação e montagem da mensagem de agendamento para o WhatsApp.
-src/styles.css — mapa responsivo, menu de rotas, contraste, imagem do hero, escala visual, reprodução responsiva dos modais e restauração da tipografia original dos controles.
+src/styles.css — mapa responsivo, menu de rotas, contraste, imagem do hero, escala visual, modais, tipografia dos controles e interações de hover em cards e imagens.
 assets/hero-workshop.jpg — nova foto da fachada incorporada como substituição do PNG removido durante a execução.
 assets/logo-transparent.png — marca com transparência real utilizada no Header/Navbar.
 PLANS.MD — progresso, decisões, descobertas, validação e retrospectiva.
@@ -1225,6 +1231,7 @@ Modal tablet 768 x 1024 e mobile 390 x 844: aprovados, com rolagem interna quand
 Audit WCAG A/AA após os modais: zero violações; contrastes sobre o hero e seis pequenos elementos ficaram inconclusivos para revisão manual.
 Comparação visual final: realizada contra os 14 screenshots disponíveis.
 Tipografia após restauração: corpo confirmado em `Plus Jakarta Sans` e botão do header confirmado em `Arial`, como antes da implementação dos modais.
+Hover em desktop 1440 x 900: card confirmou `translateY(-4px)`, imagem confirmou escala `1.025`, sem overflow horizontal e sem erros no console.
 ```
 
 ### Commits criados nesta etapa

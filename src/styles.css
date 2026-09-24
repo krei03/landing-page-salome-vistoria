@@ -286,6 +286,17 @@ img {
   box-shadow: 0 1px 2px rgba(0, 0, 0, 0.02);
 }
 
+.service-card,
+.structure-grid article,
+.intro-card,
+.story-card,
+.timeline-card,
+.checklist-card,
+.faq-list details,
+.feature-row span {
+  transition: transform 180ms ease, box-shadow 180ms ease, border-color 180ms ease;
+}
+
 .service-card {
   min-height: 500px;
   padding: 30px;
@@ -324,6 +335,13 @@ img {
   object-fit: cover;
   border-radius: 9px;
   margin-top: auto;
+}
+
+.service-card img,
+.structure-grid img,
+.history-photos img,
+.service-modal-image {
+  transition: transform 220ms ease, box-shadow 220ms ease, filter 220ms ease;
 }
 
 .card-link {
@@ -935,6 +953,28 @@ img {
 }
 
 @media (hover: hover) and (pointer: fine) {
+  .service-card:hover,
+  .structure-grid article:hover,
+  .intro-card:hover,
+  .story-card:hover,
+  .timeline-card:hover,
+  .checklist-card:hover,
+  .faq-list details:hover,
+  .feature-row span:hover {
+    transform: translateY(-4px);
+    border-color: #b8d9cf;
+    box-shadow: 0 16px 36px rgba(0, 67, 49, 0.12);
+  }
+
+  .service-card img:hover,
+  .structure-grid img:hover,
+  .history-photos img:hover,
+  .service-modal-image:hover {
+    transform: translateY(-2px) scale(1.025);
+    box-shadow: 0 12px 28px rgba(0, 67, 49, 0.18);
+    filter: saturate(1.05);
+  }
+
   .map-card:hover {
     transform: translateY(-3px);
     border-color: #b8d9cf;
@@ -945,6 +985,24 @@ img {
     color: #fff;
     background: var(--green);
     border-color: var(--green);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .service-card,
+  .structure-grid article,
+  .intro-card,
+  .story-card,
+  .timeline-card,
+  .checklist-card,
+  .faq-list details,
+  .feature-row span,
+  .service-card img,
+  .structure-grid img,
+  .history-photos img,
+  .service-modal-image,
+  .map-card {
+    transition: none;
   }
 }
 
