@@ -1116,7 +1116,7 @@ Caso o formulário precise de backend, API ou banco de dados, essa integração 
 
 **Decisão:** Aplicar elevação de 4 px, sombra e borda verde suave aos cards, além de zoom discreto de 1% e leve saturação nas imagens.
 
-**Motivo:** Dar resposta visual ao cursor sem alterar a composição da página. Os efeitos ficam restritos a dispositivos com mouse e respeitam `prefers-reduced-motion`.
+**Motivo:** Dar resposta visual ao cursor sem alterar a composição da página. Os efeitos ficam restritos a dispositivos com mouse.
 
 ## Decisão 19 — Remoção do escudo no modal de serviço
 
@@ -1143,6 +1143,12 @@ Caso o formulário precise de backend, API ou banco de dados, essa integração 
 **Decisão:** Usar `assets/favicon.png`, derivado do símbolo central de `logo - 2.jpg`, com composição quadrada e fundo transparente.
 
 **Motivo:** O JPG horizontal deixava a marca pequena na aba e exibia o quadriculado como parte da imagem. O PNG quadrado mantém o carro e o sinal legíveis em tamanhos reduzidos.
+
+## Decisão 23 — Manter as animações de hover ativas
+
+**Decisão:** Remover a regra que desligava completamente as transições quando `prefers-reduced-motion` estava ativo.
+
+**Motivo:** O ambiente do responsável do projeto deixou de exibir as animações solicitadas. Os efeitos permanecem curtos, leves e exclusivos para dispositivos com mouse.
 
 ---
 
@@ -1180,6 +1186,7 @@ Exemplos:
 * A referência de agendamento contém formulário, mas não indica armazenamento de lead nem backend. O envio foi implementado como mensagem estruturada para o WhatsApp.
 * A declaração global `font: inherit` aplicada aos controles também alterou a fonte dos botões preexistentes. A regra foi removida após a solicitação de restauração visual.
 * A versão atualizada de `logo - 2.jpg` simulava transparência com um quadriculado gravado e tinha proporção horizontal de 3:1, causando fundo cinza e marca muito pequena na aba.
+* A regra de redução de movimento podia eliminar as transições de hover conforme a configuração de animações do sistema operacional, fazendo os efeitos parecerem ausentes.
 
 ---
 
@@ -1266,6 +1273,7 @@ Favicon: `assets/logo - 2.jpg` incluído no build Vite e servido pelo Docker com
 Tipos de agendamento: seis opções confirmadas; os três novos serviços foram validados na mensagem do WhatsApp e a opção mais longa não gerou overflow em 390 x 844.
 Favicon atualizado: nova versão incluída no build como `logo - 2-DFC8pUOh.jpg` e carregada pelo navegador.
 Favicon final: PNG 1254 x 1254 com canal alfa confirmado, incluído no build como `favicon-B7HVwODx.png` e carregado como `image/png`.
+Animações restauradas: card confirmado com transição de `0.18s` e `translateY(-4px)`; imagem confirmada com transição de `0.22s` e escala `1.01`.
 ```
 
 ### Commits criados nesta etapa

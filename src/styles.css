@@ -988,24 +988,6 @@ img {
   }
 }
 
-@media (prefers-reduced-motion: reduce) {
-  .service-card,
-  .structure-grid article,
-  .intro-card,
-  .story-card,
-  .timeline-card,
-  .checklist-card,
-  .faq-list details,
-  .feature-row span,
-  .service-card img,
-  .structure-grid img,
-  .history-photos img,
-  .service-modal-image,
-  .map-card {
-    transition: none;
-  }
-}
-
 .footer {
   padding: 64px 0 26px;
   background: #080808;
