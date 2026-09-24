@@ -34,7 +34,9 @@ body {
 body,
 button,
 input,
-textarea {
+textarea,
+select {
+  font: inherit;
   letter-spacing: 0;
 }
 
@@ -142,6 +144,7 @@ img {
   border-radius: 8px;
   font-weight: 800;
   border: 0;
+  cursor: pointer;
 }
 
 .header-cta {
@@ -326,6 +329,7 @@ img {
 }
 
 .card-link {
+  width: 100%;
   height: 48px;
   margin-top: 18px;
   display: flex;
@@ -336,6 +340,8 @@ img {
   border-radius: 8px;
   color: #050505;
   font-weight: 800;
+  border: 0;
+  cursor: pointer;
 }
 
 .card-link span {
@@ -1016,6 +1022,239 @@ img {
   stroke-linejoin: round;
 }
 
+body:has(dialog[open]) {
+  overflow: hidden;
+}
+
+.modal {
+  width: min(calc(100% - 32px), 616px);
+  max-height: calc(100dvh - 32px);
+  margin: auto;
+  padding: 0;
+  color: #242424;
+  font-family: "Plus Jakarta Sans", Arial, sans-serif;
+  background: #fff;
+  border: 1px solid #dedede;
+  border-radius: 18px;
+  box-shadow: 0 24px 72px rgba(0, 0, 0, 0.32);
+  overflow: hidden auto;
+  opacity: 0;
+  transform: translateY(8px) scale(0.99);
+  transition: opacity 160ms ease, transform 160ms ease, overlay 160ms allow-discrete, display 160ms allow-discrete;
+}
+
+.modal[open] {
+  opacity: 1;
+  transform: translateY(0) scale(1);
+}
+
+@starting-style {
+  .modal[open] {
+    opacity: 0;
+    transform: translateY(8px) scale(0.99);
+  }
+}
+
+.modal::backdrop {
+  background: rgba(10, 10, 10, 0.72);
+  backdrop-filter: blur(4px);
+}
+
+.modal-content,
+.schedule-form {
+  position: relative;
+  padding: 38px;
+}
+
+.modal-close {
+  position: absolute;
+  top: 26px;
+  right: 30px;
+  width: 32px;
+  height: 32px;
+  padding: 0;
+  color: #9b9b9b;
+  background: transparent;
+  border: 0;
+  font-size: 31px;
+  line-height: 1;
+  cursor: pointer;
+}
+
+.modal-close:hover,
+.modal-close:focus-visible {
+  color: #333;
+}
+
+.modal-icon {
+  width: 48px;
+  height: 48px;
+  flex: 0 0 48px;
+  display: grid;
+  place-items: center;
+  color: #009b6d;
+  background: #effdf8;
+  border: 1px solid #8de8c8;
+  border-radius: 9px;
+}
+
+.modal-icon svg {
+  width: 23px;
+  height: 23px;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 1.8;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.service-modal-header {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding-right: 45px;
+}
+
+.service-modal h2,
+.schedule-modal h2 {
+  margin: 0;
+  color: #171717;
+  font-size: 27px;
+  line-height: 1.25;
+  font-weight: 800;
+}
+
+.service-modal-image {
+  width: min(100%, 410px);
+  aspect-ratio: 1.8 / 1;
+  margin: 23px 0;
+  object-fit: cover;
+  border-radius: 10px;
+}
+
+.service-modal h3 {
+  margin: 0 0 12px;
+  font-size: 14px;
+  line-height: 1.4;
+  font-weight: 800;
+  text-transform: uppercase;
+}
+
+.service-modal-description h3 {
+  color: #007a57;
+}
+
+.service-modal-description p,
+.service-requirements p {
+  margin: 0;
+  color: #555;
+  font-size: 18px;
+  line-height: 1.72;
+}
+
+.service-requirements {
+  margin-top: 26px;
+  padding: 20px;
+  background: #fafafa;
+  border: 1px solid #dedede;
+  border-radius: 13px;
+}
+
+.service-requirements p {
+  font-size: 15px;
+  line-height: 1.55;
+}
+
+.modal-footer {
+  margin-top: 36px;
+  padding-top: 28px;
+  border-top: 1px solid #ededed;
+}
+
+.modal-primary-action,
+.schedule-submit {
+  width: 100%;
+  min-height: 58px;
+  font-size: 16px;
+}
+
+.modal-primary-action span,
+.schedule-submit span {
+  font-size: 25px;
+  font-weight: 400;
+}
+
+.schedule-modal {
+  width: min(calc(100% - 20px), 538px);
+}
+
+.schedule-form {
+  padding: 38px 39px;
+}
+
+.schedule-form > .modal-icon {
+  margin-bottom: 19px;
+}
+
+.schedule-modal h2 {
+  margin-bottom: 6px;
+}
+
+.schedule-intro {
+  max-width: 410px;
+  margin: 0 0 29px;
+  color: #626262;
+  font-size: 15px;
+  line-height: 1.55;
+}
+
+.schedule-form label {
+  display: block;
+  margin: 0 0 8px;
+  color: #444;
+  font-size: 13px;
+  line-height: 1.4;
+  font-weight: 800;
+  text-transform: uppercase;
+}
+
+.schedule-form label span {
+  font-weight: 700;
+}
+
+.schedule-form input,
+.schedule-form select {
+  width: 100%;
+  height: 50px;
+  margin: 0 0 20px;
+  padding: 0 16px;
+  color: #292929;
+  background: #fff;
+  border: 1px solid #d1d1d1;
+  border-radius: 9px;
+  outline: none;
+}
+
+.schedule-form input::placeholder {
+  color: #a0a0a0;
+}
+
+.schedule-form input:focus,
+.schedule-form select:focus {
+  border-color: #009b6d;
+  box-shadow: 0 0 0 3px rgba(0, 155, 109, 0.12);
+}
+
+.schedule-fields-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 14px;
+}
+
+.schedule-submit {
+  margin-top: 7px;
+}
+
 @media (max-width: 1100px) {
   :root {
     --container: 920px;
@@ -1257,5 +1496,55 @@ img {
 
   .faq-list details p {
     padding: 20px;
+  }
+
+  .modal {
+    width: min(calc(100% - 20px), 616px);
+    max-height: calc(100dvh - 20px);
+    border-radius: 15px;
+  }
+
+  .modal-content,
+  .schedule-form {
+    padding: 30px 24px;
+  }
+
+  .modal-close {
+    top: 20px;
+    right: 20px;
+  }
+
+  .service-modal-header {
+    align-items: flex-start;
+    gap: 13px;
+  }
+
+  .service-modal h2,
+  .schedule-modal h2 {
+    font-size: 23px;
+  }
+
+  .service-modal-image {
+    margin: 20px 0;
+  }
+
+  .service-modal-description p {
+    font-size: 15px;
+    line-height: 1.6;
+  }
+
+  .service-requirements {
+    margin-top: 20px;
+    padding: 17px;
+  }
+
+  .modal-footer {
+    margin-top: 25px;
+    padding-top: 22px;
+  }
+
+  .schedule-fields-row {
+    grid-template-columns: 1fr;
+    gap: 0;
   }
 }

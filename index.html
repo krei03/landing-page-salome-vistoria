@@ -41,7 +41,7 @@
           <a href="#contato">Contato</a>
         </nav>
 
-        <a class="header-cta" href="#contato">Agendar Vistoria</a>
+        <button class="header-cta" type="button" data-open-schedule>Agendar Vistoria</button>
       </div>
     </header>
 
@@ -75,7 +75,7 @@
                 <p>Realizada na transferência de propriedade do veículo, verificando sua identificação, características e itens necessários para o processo.</p>
               </div>
               <img src="/assets/service-transfer.jpg" alt="Vistoria de transferência em veículo" />
-              <a class="card-link" href="#contato">Saiba mais <span>↗</span></a>
+              <button class="card-link" type="button" data-service="transferencia">Saiba mais <span>↗</span></button>
             </article>
 
             <article class="service-card">
@@ -84,7 +84,7 @@
                 <p>Realizada quando o veículo precisa passar por vistoria devido a uma infração ou determinação do órgão de trânsito, verificando os itens relacionados à regularização.</p>
               </div>
               <img src="/assets/service-id.jpg" alt="Vistoria veicular por infração de trânsito" />
-              <a class="card-link" href="#contato">Saiba mais <span>↗</span></a>
+              <button class="card-link" type="button" data-service="infracao">Saiba mais <span>↗</span></button>
             </article>
 
             <article class="service-card">
@@ -93,7 +93,7 @@
                 <p>Uma análise mais detalhada do veículo para verificar sua identificação, histórico e possíveis alterações, trazendo mais segurança antes da compra ou venda.</p>
               </div>
               <img src="/assets/service-regularizacao.jpeg" alt="Realização de vistoria cautelar" />
-              <a class="card-link" href="#contato">Saiba mais <span>↗</span></a>
+              <button class="card-link" type="button" data-service="cautelar">Saiba mais <span>↗</span></button>
             </article>
           </div>
         </div>
@@ -256,7 +256,7 @@
             </div>
 
             <div class="contact-actions">
-              <a class="button button-primary" href="https://wa.me/551338780078" target="_blank" rel="noreferrer">Agendar Vistoria</a>
+              <button class="button button-primary" type="button" data-open-schedule>Agendar Vistoria</button>
               <a class="button button-secondary" href="https://wa.me/551338780078" target="_blank" rel="noreferrer">Falar no WhatsApp</a>
             </div>
           </div>
@@ -315,6 +315,71 @@
         <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20 11.7A8 8 0 0 1 8.2 18.7L4 20l1.4-4A8 8 0 1 1 20 11.7Z"/><path d="M9 8.8c.2 3.4 2 5.2 5.2 6"/></svg>
       </a>
     </aside>
+
+    <dialog class="modal service-modal" id="service-modal" aria-labelledby="service-modal-title">
+      <div class="modal-content">
+        <button class="modal-close" type="button" data-close-modal aria-label="Fechar detalhes do serviço">×</button>
+        <header class="service-modal-header">
+          <span class="modal-icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24"><path d="M12 3 5.5 5.4v5.2c0 4.1 2.7 7.9 6.5 9.4 3.8-1.5 6.5-5.3 6.5-9.4V5.4L12 3Z"/><path d="m9.5 11.7 1.6 1.6 3.7-4"/></svg>
+          </span>
+          <h2 id="service-modal-title"></h2>
+        </header>
+        <img class="service-modal-image" alt="" />
+        <section class="service-modal-description" aria-labelledby="service-description-title">
+          <h3 id="service-description-title">Sobre o procedimento</h3>
+          <p></p>
+        </section>
+        <section class="service-requirements" aria-labelledby="service-requirements-title">
+          <h3 id="service-requirements-title">O que você precisa levar</h3>
+          <p>Conforme o tipo de vistoria e os requisitos aplicáveis. Entre em contato para confirmar o que é necessário para o seu veículo.</p>
+        </section>
+        <div class="modal-footer">
+          <button class="button button-primary modal-primary-action" type="button" data-service-schedule>
+            Agendar Vistoria <span aria-hidden="true">→</span>
+          </button>
+        </div>
+      </div>
+    </dialog>
+
+    <dialog class="modal schedule-modal" id="schedule-modal" aria-labelledby="schedule-modal-title">
+      <form class="schedule-form" id="schedule-form">
+        <button class="modal-close" type="button" data-close-modal aria-label="Fechar agendamento">×</button>
+        <span class="modal-icon" aria-hidden="true">
+          <svg viewBox="0 0 24 24"><path d="M7 3v4M17 3v4M4 9h16M5 5h14a1 1 0 0 1 1 1v14H4V6a1 1 0 0 1 1-1Z"/></svg>
+        </span>
+        <h2 id="schedule-modal-title">Agendar Vistoria</h2>
+        <p class="schedule-intro">Preencha os dados para agilizar seu atendimento via WhatsApp.</p>
+
+        <label for="schedule-type">Tipo de vistoria</label>
+        <select id="schedule-type" name="tipo" required>
+          <option value="Vistoria para Transferência">Vistoria de Transferência</option>
+          <option value="Vistoria por Infração de Trânsito">Vistoria por Infração de Trânsito</option>
+          <option value="Vistoria Cautelar">Vistoria Cautelar</option>
+        </select>
+
+        <label for="schedule-name">Seu nome <span>(opcional)</span></label>
+        <input id="schedule-name" name="nome" type="text" autocomplete="name" placeholder="Ex: Carlos Silva" />
+
+        <div class="schedule-fields-row">
+          <div>
+            <label for="schedule-model">Modelo</label>
+            <input id="schedule-model" name="modelo" type="text" placeholder="Ex: Corolla 2022" required />
+          </div>
+          <div>
+            <label for="schedule-plate">Placa <span>(opcional)</span></label>
+            <input id="schedule-plate" name="placa" type="text" maxlength="7" autocomplete="off" placeholder="ABC1D23" />
+          </div>
+        </div>
+
+        <label for="schedule-date">Data preferida <span>(opcional)</span></label>
+        <input id="schedule-date" name="data" type="date" />
+
+        <button class="button button-primary schedule-submit" type="submit">
+          Continuar no WhatsApp <span aria-hidden="true">→</span>
+        </button>
+      </form>
+    </dialog>
 
     <script type="module" src="/src/main.js"></script>
   </body>

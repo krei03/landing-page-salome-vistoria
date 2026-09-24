@@ -28,7 +28,7 @@ O objetivo não é criar uma landing page genérica ou escolher outro design. O 
 * comportamento responsivo;
 * diferenças entre desktop e mobile, caso existam screenshots dessas versões.
 
-A landing page deverá apresentar os serviços de desenvolvimento de sistemas e soluções digitais e conduzir o visitante para uma ação de contato/orçamento.
+A landing page deverá apresentar os serviços de vistoria veicular da Salomé Vistorias e conduzir o visitante para contato ou agendamento pelo WhatsApp.
 
 ---
 
@@ -80,17 +80,13 @@ Se existirem screenshots de desktop e mobile, ambos devem ser considerados como 
 
 ### Objetivo comercial
 
-A página deverá comunicar de forma clara que o serviço oferece desenvolvimento de soluções digitais personalizadas, como:
+A página deverá comunicar de forma clara os serviços de vistoria veicular oferecidos, como:
 
-* sistemas web;
-* sites;
-* landing pages;
-* dashboards;
-* APIs;
-* automações;
-* integrações;
-* sistemas internos;
-* soluções personalizadas.
+* vistoria para transferência;
+* vistoria por infração de trânsito;
+* vistoria cautelar;
+* orientação sobre documentação e regularização;
+* atendimento e agendamento via WhatsApp.
 
 O visitante deve conseguir entender rapidamente:
 
@@ -101,7 +97,7 @@ Como isso pode ajudar
         ↓
 Por que entrar em contato
         ↓
-Solicitar orçamento / contato
+Agendar vistoria / contato
 ```
 
 ---
@@ -124,6 +120,8 @@ Solicitar orçamento / contato
 * [x] Adicionar ao Header/Navbar a nova logo colocada nos assets do projeto, mantendo a proporção original.
 * [x] Corrigir a escala visual geral do site, que estava excessivamente ampliada/desproporcional, para uma escala padrão em navegador com zoom em 100%.
 * [x] Revisar tamanhos de fontes, imagens, containers, botões e espaçamentos após o ajuste de escala.
+* [x] Analisar os novos screenshots adicionados à pasta `screenshots/` referentes aos modais de "Saiba mais" e "Agendar".
+* [x] Identificar exatamente o conteúdo, tamanho, posição, espaçamento, cores e comportamento visual dos modais.
 
 ## Estrutura
 
@@ -140,6 +138,12 @@ Solicitar orçamento / contato
 * [x] Adicionar ação "Como chegar" permitindo escolher entre Google Maps e Waze.
 * [x] Adicionar interação visual suave ao mapa e ao card de localização.
 * [x] Garantir que mapa e ações de navegação funcionem corretamente no desktop e mobile.
+* [x] Implementar o modal de "Saiba mais" para cada tipo de vistoria conforme os novos screenshots.
+* [x] Garantir que cada serviço abra seu respectivo conteúdo de "Saiba mais".
+* [x] Implementar o modal de "Agendar" conforme o novo screenshot.
+* [x] Reproduzir fielmente campos, textos, botões e organização visual apresentados nas referências.
+* [x] Implementar abertura e fechamento por ação, botão, `Esc` e clique no backdrop.
+* [x] Adaptar os modais para desktop, tablet e mobile.
 
 ## Visual
 
@@ -174,12 +178,12 @@ Solicitar orçamento / contato
 
 * [x] Garantir que os CTAs estejam funcionando.
 * [x] Implementar botão de WhatsApp quando aplicável.
-* [ ] Implementar formulário de contato.
-* [ ] Implementar validação dos campos.
-* [ ] Criar feedback visual de envio.
-* [ ] Preparar estrutura dos dados dos leads.
+* [x] Implementar formulário de agendamento para contato via WhatsApp.
+* [x] Implementar validação dos campos obrigatórios.
+* [x] Criar feedback visual de validação e encaminhamento ao WhatsApp após envio válido.
+* [x] Preparar os dados do atendimento em uma mensagem estruturada para o WhatsApp.
 
-Os quatro itens de formulário permanecem pendentes porque a referência não contém formulário e não existe backend/API definido.
+O formulário segue a nova referência visual e não persiste dados: ele valida no navegador e abre uma conversa no WhatsApp com as informações preenchidas.
 
 ## Validação
 
@@ -562,6 +566,76 @@ Evitar:
 
 A interação deve dar mais vida à seção sem descaracterizar o layout original.
 
+## 12. Dropdowns de "Saiba mais" e "Agendar"
+
+Novos screenshots foram adicionados à pasta `screenshots/` mostrando os estados abertos das ações "Saiba mais" e "Agendar".
+
+Antes de implementar, localizar e analisar essas novas referências.
+
+### Saiba mais
+
+Cada serviço/vistoria que possuir a ação "Saiba mais" deve abrir a interface apresentada nos screenshots.
+
+Não criar um dropdown genérico sem primeiro analisar a referência.
+
+Reproduzir:
+
+- título;
+- descrição;
+- informações apresentadas;
+- ícones;
+- botões;
+- cores;
+- background;
+- bordas;
+- border-radius;
+- sombras;
+- espaçamentos;
+- largura;
+- altura;
+- posição;
+- botão/ícone para fechar, caso exista;
+- animação, caso seja perceptível na referência.
+
+Cada tipo de vistoria deve apresentar o conteúdo correspondente.
+
+O usuário deve conseguir abrir e fechar a interface sem recarregar a página.
+
+### Agendar
+
+A ação "Agendar" deve abrir a interface apresentada no respectivo screenshot.
+
+Reproduzir fielmente:
+
+- título;
+- campos;
+- textos;
+- seletores;
+- botões;
+- organização;
+- espaçamento;
+- cores;
+- bordas;
+- comportamento.
+
+Não adicionar campos que não estejam presentes na referência sem necessidade funcional documentada.
+
+### Comportamento
+
+As interfaces devem possuir uma transição curta e discreta de abertura e fechamento.
+
+Priorizar algo simples, como:
+
+- fade;
+- pequena movimentação vertical;
+- expansão suave.
+
+Evitar animações exageradas.
+
+Caso o usuário abra outro "Saiba mais", evitar manter várias interfaces abertas ao mesmo tempo se esse comportamento não fizer sentido na referência.
+
+No mobile, garantir que todo o conteúdo continue acessível e não ultrapasse a largura da tela.
+
 ---
 
 # Concrete Steps
@@ -842,10 +916,16 @@ A implementação será considerada concluída quando todos os critérios abaixo
 * [x] CTAs funcionam.
 * [x] Links internos funcionam e os links externos possuem destinos válidos.
 * [x] WhatsApp exibe `(13) 97417-8999` e todos os CTAs apontam para `551338780078`, conforme orientação comercial.
-* [ ] Formulário funciona.
-* [ ] Campos obrigatórios possuem validação.
-* [ ] Usuário recebe feedback após envio.
+* [x] Formulário de agendamento funciona e abre o WhatsApp com mensagem estruturada.
+* [x] Campos obrigatórios possuem validação nativa visível.
+* [x] Usuário é encaminhado ao WhatsApp após envio válido.
 * [x] Não existem erros JavaScript no console.
+
+* [x] Cada card de serviço abre seu conteúdo correspondente no modal de "Saiba mais".
+* [x] O modal de agendamento reproduz os campos e a organização da nova referência.
+* [x] Os modais fecham por botão e pela tecla `Esc` sem recarregar a página.
+* [x] Apenas um modal permanece aberto por vez.
+* [x] Os modais permanecem acessíveis e sem overflow horizontal em desktop, tablet e mobile.
 
 ## Qualidade técnica
 
@@ -928,11 +1008,13 @@ Caso o formulário precise de backend, API ou banco de dados, essa integração 
 
 ---
 
-## Decisão 05 — Formulário não incluído nesta etapa
+## Decisão 05 — Formulário não incluído na referência inicial
 
 **Decisão:** Não adicionar formulário sem referência visual e sem definição de API, persistência ou destino dos leads.
 
 **Motivo:** Os screenshots usam WhatsApp como canal de conversão; inventar um formulário contrariaria a prioridade de fidelidade visual.
+
+**Status:** Decisão superada pela Decisão 16 após a inclusão do screenshot específico do formulário de agendamento.
 
 ---
 
@@ -1010,6 +1092,20 @@ Caso o formulário precise de backend, API ou banco de dados, essa integração 
 
 **Motivo:** O responsável do projeto solicitou explicitamente que o número apresentado ao visitante seja diferente do número usado para iniciar a conversa.
 
+## Decisão 15 — Novos screenshots para "Saiba mais" e "Agendar"
+
+**Decisão:** Os novos screenshots adicionados à pasta `screenshots/` passam a ser a fonte visual de verdade para os estados abertos de "Saiba mais" e "Agendar".
+
+**Motivo:** As referências agora mostram explicitamente como essas interações devem aparecer, portanto a implementação não deve utilizar um dropdown ou modal genérico diferente do design fornecido.
+
+**Decisão:** Manter as interações simples, com abertura e fechamento suaves, sem adicionar animações exageradas que não estejam presentes nas referências.
+
+## Decisão 16 — Modais nativos e agendamento pelo WhatsApp
+
+**Decisão:** Implementar as duas interfaces com o elemento nativo `dialog`, reutilizar um único modal para os três serviços e montar a mensagem de agendamento no navegador antes de abrir `wa.me/551338780078`.
+
+**Motivo:** `dialog` fornece foco modal, fechamento por `Esc` e backdrop sem dependências. O fluxo preserva os campos do screenshot e mantém o projeto estático, sem simular persistência ou backend inexistente.
+
 ---
 
 # Surprises & Discoveries
@@ -1026,7 +1122,7 @@ Exemplos:
 - A estrutura existente do projeto exigiu adaptação.
 ```
 
-* Os 12 screenshots são desktop, com largura entre 1866 e 1888 px; não há screenshots tablet/mobile.
+* Os 12 screenshots iniciais são desktop, com largura entre 1866 e 1888 px; não há referências completas de tablet/mobile. Os dois novos recortes de modal medem 679 x 925 e 565 x 736 px.
 * O repositório já continha a maior parte da implementação e três commits relevantes, mas o `PLANS.MD` estava sem acompanhamento e ainda não era versionado.
 * A referência usava contatos de exemplo. WhatsApp e telefone fixo já foram substituídos pelos dados reais; endereço, Instagram e mapa ainda precisam de confirmação.
 * O primeiro teste do container mostrou `404` para `/favicon.ico`; foi resolvido com favicon SVG embutido.
@@ -1040,6 +1136,10 @@ Exemplos:
 * O navegador headless não anuncia suporte a `hover: hover`, portanto a elevação foi validada pela regra CSS e mantida restrita a mouse/trackpad. O menu, o mapa e as rotas foram testados por interação real.
 * A auditoria após o mapa identificou que o WhatsApp flutuante estava fora de landmarks semânticos. O link foi envolvido em um `aside` rotulado, eliminando a violação.
 * O número exibido como WhatsApp e o destino dos links são intencionalmente diferentes por solicitação comercial; essa divergência não deve ser normalizada automaticamente.
+* O Purpose e o Objetivo comercial ainda descreviam uma empresa de soluções digitais, em conflito com todo o conteúdo e os screenshots de vistoria veicular; ambos foram corrigidos para refletir a Salomé Vistorias.
+* Caminhos de imagens definidos apenas em JavaScript não foram reescritos pelo Vite no primeiro build. A solução foi criar as URLs com `new URL(..., import.meta.url)` para que os três assets sejam incluídos no bundle.
+* O elemento nativo `dialog` não herdou automaticamente a família tipográfica do `body`; a fonte foi aplicada explicitamente ao modal antes da comparação final.
+* A referência de agendamento contém formulário, mas não indica armazenamento de lead nem backend. O envio foi implementado como mensagem estruturada para o WhatsApp.
 
 ---
 
@@ -1050,8 +1150,9 @@ Registrar aqui:
 ### Arquivos alterados
 
 ```text
-index.html — conteúdo histórico, contatos reais, FAQ com consulta oficial do Detran, mapa interativo, rotas externas, favicon, acessibilidade do menu, nova logo e título bicolor do hero.
-src/styles.css — mapa responsivo, menu de rotas, hover do card, links do FAQ e de contato, ícones, contraste, imagem do hero, logo proporcional e nova escala visual.
+index.html — conteúdo histórico, contatos reais, FAQ, mapa interativo, rotas externas, favicon, nova logo, título bicolor, botões de abertura e estrutura semântica dos modais de serviço e agendamento.
+src/main.js — controle de abertura e fechamento, conteúdo específico dos três serviços, seleção de vistoria, validação e montagem da mensagem de agendamento para o WhatsApp.
+src/styles.css — mapa responsivo, menu de rotas, contraste, imagem do hero, escala visual e reprodução responsiva dos dois novos modais.
 assets/hero-workshop.jpg — nova foto da fachada incorporada como substituição do PNG removido durante a execução.
 assets/logo-transparent.png — marca com transparência real utilizada no Header/Navbar.
 PLANS.MD — progresso, decisões, descobertas, validação e retrospectiva.
@@ -1072,6 +1173,8 @@ screenshots/Perguntas frequentes.png
 screenshots/Perguntas frequentes 2.png
 screenshots/localizaçao.png
 screenshots/localizaçao 2.png
+screenshots/dropdown saiba mais .png
+screenshots/dropdown agendar vistoria.png
 ```
 
 ### Comandos executados
@@ -1084,6 +1187,7 @@ docker compose logs --tail
 docker compose up -d --build
 Invoke-WebRequest http://127.0.0.1:8080/
 npx --yes agent-browser (open, set viewport, snapshot, screenshot, eval, errors, console, a11y, click, hover, close)
+view_image para comparação visual dos dois novos screenshots e das capturas de validação
 Pesquisa web do endereço comercial e das documentações oficiais de Maps URLs e Waze Deep Links
 git add e git commit
 ```
@@ -1107,7 +1211,12 @@ Console e erros de página: nenhum erro encontrado.
 Audit WCAG A/AA: zero violações; dois contrastes do hero ficaram inconclusivos por causa do gradiente.
 Audit WCAG após título bicolor: zero violações; os três textos sobre o gradiente do hero ficaram inconclusivos para cálculo automático e foram conferidos visualmente.
 Audit WCAG após mapa interativo: zero violações; os três contrastes do hero sobre fotografia permanecem inconclusivos e foram conferidos visualmente.
-Comparação visual final: realizada contra todos os 12 screenshots.
+Modais: os três conteúdos de serviço, seleção automática do tipo de vistoria, abertura exclusiva, fechamento por botão e `Esc` validados.
+Formulário: bloqueio do modelo vazio e geração da mensagem com tipo, modelo, nome, placa e data formatada validados sem abrir uma conversa real.
+Modal desktop 1879 x 939: serviço com 616 x 886 px, imagem de 410 px e agendamento com 538 x 710 px, próximos às referências de 616 x 890 e 538 x 709 px.
+Modal tablet 768 x 1024 e mobile 390 x 844: aprovados, com rolagem interna quando necessária e sem overflow horizontal.
+Audit WCAG A/AA após os modais: zero violações; contrastes sobre o hero e seis pequenos elementos ficaram inconclusivos para revisão manual.
+Comparação visual final: realizada contra os 14 screenshots disponíveis.
 ```
 
 ### Observações
@@ -1117,7 +1226,7 @@ O container permanece em execução em http://localhost:8080.
 Screenshots de validação foram gerados no diretório temporário do Windows e não foram adicionados ao repositório.
 O WhatsApp exibido é `(13) 97417-8999`, enquanto todos os links usam `wa.me/551338780078`. O telefone fixo exibido é `(13) 3878-0078`. Endereço, mapa e rotas usam a Avenida Antônio Emmerick, 156.
 O asset `assets/mapa.png` foi mantido no repositório como material original, mas não é mais referenciado nem incluído no build.
-Não foi criado formulário porque ele não aparece na fonte visual e não há contrato de backend.
+O formulário de agendamento não persiste leads porque não há contrato de backend; os dados são enviados somente na mensagem aberta no WhatsApp.
 A escala foi corrigida por propriedades individuais de layout; nenhum `zoom` CSS foi adicionado.
 ```
 
@@ -1139,14 +1248,14 @@ Registrar:
 ## Resultado final
 
 ```text
-Landing page completa e responsiva, visualmente próxima das referências, executando em Vite no desenvolvimento e em Nginx via Docker na produção. A nova logo está no header, o título do hero foi dividido entre branco e verde, a escala geral foi normalizada para zoom 100% e a localização agora possui mapa interativo com rotas por Google Maps e Waze. Build, container, interações, imagens, console, responsividade e acessibilidade automatizada foram validados. A foto atual do hero é uma fachada real adicionada durante a execução e difere da imagem original do screenshot.
+Landing page completa e responsiva, visualmente próxima das referências, executando em Vite no desenvolvimento e em Nginx via Docker na produção. Além da navegação, mapa e contatos, cada serviço agora abre seu conteúdo específico e o formulário de agendamento valida os campos e prepara a conversa no WhatsApp. Build, container, interações, imagens, console, responsividade e acessibilidade automatizada foram validados. A foto atual do hero é uma fachada real adicionada durante a execução e difere da imagem original do screenshot.
 ```
 
 ## Pendências
 
 ```text
 Confirmar o perfil oficial do Instagram e transformá-lo em link.
-Decidir se haverá formulário de leads; se houver, definir API, persistência, consentimento e feedback antes da implementação.
+Decidir se o agendamento deverá apenas abrir o WhatsApp ou também persistir leads; para persistência, definir API, consentimento e política de dados.
 Obter screenshots mobile/tablet, caso seja necessária fidelidade visual específica nessas larguras.
 Confirmar se a nova foto da fachada deve permanecer no hero ou se a imagem da referência deve ser restaurada.
 ```
@@ -1154,5 +1263,5 @@ Confirmar se a nova foto da fachada deve permanecer no hero ou se a imagem da re
 ## Próximos passos
 
 ```text
-Confirmar o perfil oficial do Instagram. Depois, decidir formalmente se o fluxo de conversão permanecerá apenas no WhatsApp ou se incluirá formulário com backend.
+Confirmar o perfil oficial do Instagram. Depois, decidir se os dados do agendamento permanecerão somente no WhatsApp ou também serão persistidos em um backend.
 ```
