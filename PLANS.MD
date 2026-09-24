@@ -174,7 +174,7 @@ Solicitar orçamento / contato
 * [ ] Criar feedback visual de envio.
 * [ ] Preparar estrutura dos dados dos leads.
 
-Os quatro itens de formulário permanecem pendentes porque a referência não contém formulário e não existe backend/API definido. O número do WhatsApp também deve ser substituído pelo dado real antes da publicação.
+Os quatro itens de formulário permanecem pendentes porque a referência não contém formulário e não existe backend/API definido.
 
 ## Validação
 
@@ -756,7 +756,7 @@ A implementação será considerada concluída quando todos os critérios abaixo
 
 * [x] CTAs funcionam.
 * [x] Links internos funcionam e os links externos possuem destinos válidos.
-* [ ] WhatsApp aponta para o número real da empresa. A integração está implementada, mas usa `5511999998888` como placeholder.
+* [x] WhatsApp aponta para o número real da empresa: `5513996576383`.
 * [ ] Formulário funciona.
 * [ ] Campos obrigatórios possuem validação.
 * [ ] Usuário recebe feedback após envio.
@@ -871,11 +871,19 @@ Caso o formulário precise de backend, API ou banco de dados, essa integração 
 
 ---
 
-## Decisão 10 — Logo proporcional com recorte não destrutivo
+## Decisão 10 — Logo proporcional com fundo transparente
 
-**Decisão:** Usar `assets/logo.png` com `height: auto` dentro de uma janela de recorte no header e aplicar `mix-blend-mode: screen`.
+**Decisão:** Usar `assets/logo-transparent.png` com `object-fit: contain` no header.
 
-**Motivo:** O arquivo possui canvas quadrado de 302 x 306 px, enquanto a marca ocupa uma faixa horizontal central com fundo preto semitransparente. O recorte CSS preserva a proporção original e integra o fundo sem modificar o asset fornecido.
+**Motivo:** A logo JPG fornecida continha o quadriculado de transparência gravado no fundo. A versão tratada preserva a marca, remove o fundo e se adapta ao desktop e ao mobile sem recorte.
+
+---
+
+## Decisão 11 — Contatos reais e consulta oficial do Detran
+
+**Decisão:** Direcionar todos os CTAs de WhatsApp para `5513996576383`, exibir o telefone fixo `(13) 3878-0078` e incluir no FAQ a consulta de credenciamento no portal oficial do Detran-SP.
+
+**Motivo:** Os dados foram fornecidos pelo responsável do projeto e substituem os placeholders usados durante a reprodução visual.
 
 ---
 
@@ -895,13 +903,13 @@ Exemplos:
 
 * Os 12 screenshots são desktop, com largura entre 1866 e 1888 px; não há screenshots tablet/mobile.
 * O repositório já continha a maior parte da implementação e três commits relevantes, mas o `PLANS.MD` estava sem acompanhamento e ainda não era versionado.
-* A referência e a implementação usam telefone, WhatsApp e endereço de exemplo; esses dados precisam ser substituídos antes da publicação.
+* A referência usava contatos de exemplo. WhatsApp e telefone fixo já foram substituídos pelos dados reais; endereço, Instagram e mapa ainda precisam de confirmação.
 * O primeiro teste do container mostrou `404` para `/favicon.ico`; foi resolvido com favicon SVG embutido.
 * A primeira auditoria de acessibilidade encontrou contraste insuficiente nos CTAs; após o ajuste de cor, o audit retornou zero violações.
 * O audit não conseguiu calcular automaticamente o contraste do texto do hero por causa do gradiente. A camada clara e o texto foram conferidos visualmente.
 * O formulário descrito genericamente no plano não aparece nos screenshots e não possui backend definido.
 * Durante a validação, `assets/hero-workshop.png` foi substituído externamente por `assets/hero-workshop.jpg`, uma foto real da fachada com tamanho menor. As referências CSS foram atualizadas para manter o hero funcional.
-* A nova logo tem dimensões 302 x 306 px, mas o conteúdo visual é horizontal e possui amplas margens no próprio PNG. Foi necessário recorte por overflow, mantendo a imagem com `height: auto`.
+* A logo JPG fornecida continha um quadriculado de transparência gravado. Foi criada `assets/logo-transparent.png` e o header passou a usar `object-fit: contain`.
 * A sensação de zoom não vinha do navegador: em 1440 px, o container de 1328 px, o H1 de 66 px e o header de 98 px mantinham uma escala próxima da referência de 1880 px. A viewport final foi confirmada com `visualViewport.scale = 1`.
 
 ---
@@ -913,10 +921,10 @@ Registrar aqui:
 ### Arquivos alterados
 
 ```text
-index.html — conteúdo histórico, ícones de contato, favicon, acessibilidade do menu, nova logo e título bicolor do hero.
-src/styles.css — ícones de contato, contraste, imagem do hero, logo proporcional e nova escala visual.
+index.html — conteúdo histórico, contatos reais, FAQ com consulta oficial do Detran, favicon, acessibilidade do menu, nova logo e título bicolor do hero.
+src/styles.css — links do FAQ e de contato, ícones, contraste, imagem do hero, logo proporcional e nova escala visual.
 assets/hero-workshop.jpg — nova foto da fachada incorporada como substituição do PNG removido durante a execução.
-assets/logo.png — nova marca utilizada no Header/Navbar.
+assets/logo-transparent.png — marca com transparência real utilizada no Header/Navbar.
 PLANS.MD — progresso, decisões, descobertas, validação e retrospectiva.
 ```
 
@@ -960,7 +968,7 @@ Browser desktop 1879 x 939: aprovado, sem overflow e sem imagens quebradas.
 Browser desktop 1440 x 900 em zoom 100%: aprovado; `visualViewport.scale = 1`, escala visual revisada e sem overflow.
 Browser tablet 768 x 1024: aprovado, sem overflow.
 Browser mobile 390 x 844: aprovado, sem overflow; menu abre e fecha após navegação.
-FAQ: abertura exclusiva e conteúdo da resposta validados.
+FAQ: abertura exclusiva, pergunta sobre credenciamento e link oficial do Detran validados.
 Console e erros de página: nenhum erro encontrado.
 Audit WCAG A/AA: zero violações; dois contrastes do hero ficaram inconclusivos por causa do gradiente.
 Audit WCAG após título bicolor: zero violações; os três textos sobre o gradiente do hero ficaram inconclusivos para cálculo automático e foram conferidos visualmente.
@@ -972,7 +980,7 @@ Comparação visual final: realizada contra todos os 12 screenshots.
 ```text
 O container permanece em execução em http://localhost:8080.
 Screenshots de validação foram gerados no diretório temporário do Windows e não foram adicionados ao repositório.
-Os links de WhatsApp usam um número placeholder e o link de mapa aponta para a página geral do Google Maps.
+Os links de WhatsApp usam o número real `5513996576383`; o telefone fixo exibido é `(13) 3878-0078`. O link de mapa ainda aponta para a página geral do Google Maps.
 Não foi criado formulário porque ele não aparece na fonte visual e não há contrato de backend.
 A escala foi corrigida por propriedades individuais de layout; nenhum `zoom` CSS foi adicionado.
 ```
@@ -1001,7 +1009,7 @@ Landing page completa e responsiva, visualmente próxima das referências, execu
 ## Pendências
 
 ```text
-Substituir telefone, WhatsApp, endereço, Instagram e destino exato do Google Maps pelos dados reais.
+Substituir endereço, Instagram e destino exato do Google Maps pelos dados reais.
 Decidir se haverá formulário de leads; se houver, definir API, persistência, consentimento e feedback antes da implementação.
 Obter screenshots mobile/tablet, caso seja necessária fidelidade visual específica nessas larguras.
 Confirmar se a nova foto da fachada deve permanecer no hero ou se a imagem da referência deve ser restaurada.
@@ -1010,5 +1018,5 @@ Confirmar se a nova foto da fachada deve permanecer no hero ou se a imagem da re
 ## Próximos passos
 
 ```text
-Confirmar os dados comerciais reais e atualizar todos os CTAs externos. Depois, decidir formalmente se o fluxo de conversão permanecerá apenas no WhatsApp ou se incluirá formulário com backend.
+Confirmar endereço, Instagram e destino exato do Google Maps. Depois, decidir formalmente se o fluxo de conversão permanecerá apenas no WhatsApp ou se incluirá formulário com backend.
 ```

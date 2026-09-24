@@ -736,6 +736,11 @@ img {
   line-height: 1.65;
 }
 
+.faq-list details p a {
+  color: #006f50;
+  font-weight: 700;
+}
+
 .contact-section {
   border-top: 1px solid var(--line);
 }
@@ -808,6 +813,16 @@ img {
 .contact-list strong {
   color: #050505;
   font-size: 18px;
+}
+
+.contact-list strong a {
+  color: inherit;
+  text-decoration: none;
+}
+
+.contact-list strong a:hover {
+  color: #006f50;
+  text-decoration: underline;
 }
 
 .contact-actions {
