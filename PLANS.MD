@@ -1156,6 +1156,12 @@ Caso o formulário precise de backend, API ou banco de dados, essa integração 
 
 **Motivo:** O projeto usa JavaScript puro, não React; `lucide` oferece o mesmo ícone sem introduzir React. O estado nativo existente é reutilizado, sem lógica paralela, e a rotação usa transição de 250 ms.
 
+## Decisão 25 — Perfil oficial do Instagram
+
+**Decisão:** Transformar `@salomevistorias` em link para `https://www.instagram.com/salomevistorias?stkn=c2wyZ3dwMm0yb3pr`, com abertura em nova aba.
+
+**Motivo:** O responsável do projeto forneceu o endereço oficial, permitindo concluir a pendência de contato sem alterar o texto visual da seção.
+
 ---
 
 # Surprises & Discoveries
@@ -1174,7 +1180,7 @@ Exemplos:
 
 * Os 12 screenshots iniciais são desktop, com largura entre 1866 e 1888 px; não há referências completas de tablet/mobile. Os dois novos recortes de modal medem 679 x 925 e 565 x 736 px.
 * O repositório já continha a maior parte da implementação e três commits relevantes, mas o `PLANS.MD` estava sem acompanhamento e ainda não era versionado.
-* A referência usava contatos de exemplo. WhatsApp e telefone fixo já foram substituídos pelos dados reais; endereço, Instagram e mapa ainda precisam de confirmação.
+* A referência usava contatos de exemplo. WhatsApp, telefone fixo, endereço, Instagram e mapa foram posteriormente confirmados e atualizados com os dados fornecidos.
 * O primeiro teste do container mostrou `404` para `/favicon.ico`; foi resolvido com favicon SVG embutido.
 * A primeira auditoria de acessibilidade encontrou contraste insuficiente nos CTAs; após o ajuste de cor, o audit retornou zero violações.
 * O audit não conseguiu calcular automaticamente o contraste do texto do hero por causa do gradiente. A camada clara e o texto foram conferidos visualmente.
@@ -1285,6 +1291,7 @@ Animações restauradas: card confirmado com transição de `0.18s` e `translate
 FAQ desktop 1440 x 900: sete `ChevronRight` renderizados; fechado sem rotação, aberto em 90 graus, duração de 250 ms e abertura exclusiva preservada.
 FAQ mobile 390 x 844: rotação individual e ausência de overflow horizontal confirmadas.
 Audit WCAG A/AA após os ícones do FAQ: zero violações; apenas contrastes do hero sobre fotografia permaneceram inconclusivos.
+Instagram: `@salomevistorias` vinculado ao perfil oficial informado, com abertura em nova aba.
 ```
 
 ### Commits criados nesta etapa
@@ -1328,7 +1335,6 @@ Landing page completa e responsiva, visualmente próxima das referências, execu
 ## Pendências
 
 ```text
-Confirmar o perfil oficial do Instagram e transformá-lo em link.
 Decidir se o agendamento deverá apenas abrir o WhatsApp ou também persistir leads; para persistência, definir API, consentimento e política de dados.
 Obter screenshots mobile/tablet, caso seja necessária fidelidade visual específica nessas larguras.
 Confirmar se a nova foto da fachada deve permanecer no hero ou se a imagem da referência deve ser restaurada.
@@ -1337,5 +1343,5 @@ Confirmar se a nova foto da fachada deve permanecer no hero ou se a imagem da re
 ## Próximos passos
 
 ```text
-Confirmar o perfil oficial do Instagram. Depois, decidir se os dados do agendamento permanecerão somente no WhatsApp ou também serão persistidos em um backend.
+Decidir se os dados do agendamento permanecerão somente no WhatsApp ou também serão persistidos em um backend.
 ```
